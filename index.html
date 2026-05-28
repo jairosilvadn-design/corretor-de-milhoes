@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Corretor de Milhões</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#d4a843">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -37,14 +36,11 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',sans-serif;fo
 .notif-btn{background:var(--goldf);border:1px solid var(--border);border-radius:7px;padding:6px 10px;color:var(--gold);cursor:pointer;font-size:12px;display:flex;align-items:center;gap:5px}
 .main{flex:1;padding:14px}
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
-.mc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:13px}
+.mc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:13px;cursor:default}
 .mc-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:3px}
 .mc-val{font-size:24px;font-weight:700;color:var(--gold2)}
 .mc-sub{font-size:11px;color:var(--text2);margin-top:2px}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:13px}
 .sc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:13px}
-.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
-.st{font-size:13px;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:6px}
 .btn-sm{background:var(--goldf);border:1px solid var(--border);border-radius:6px;padding:5px 10px;color:var(--gold);cursor:pointer;font-size:12px;display:flex;align-items:center;gap:4px;white-space:nowrap}
 .btn-sm:hover{background:rgba(212,168,67,0.2)}
 .btn-primary{background:linear-gradient(135deg,var(--gold3),var(--gold));border:none;border-radius:8px;padding:8px 15px;color:#090c14;font-weight:700;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:5px}
@@ -53,6 +49,8 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',sans-serif;fo
 .btn-green:hover{background:rgba(46,204,113,0.2)}
 .btn-red{background:rgba(231,76,60,0.09);border:1px solid rgba(231,76,60,0.28);border-radius:6px;padding:5px 10px;color:var(--red);cursor:pointer;font-size:12px;display:flex;align-items:center;gap:4px}
 .btn-red:hover{background:rgba(231,76,60,0.18)}
+.btn-gold{background:rgba(212,168,67,0.15);border:1px solid rgba(212,168,67,0.35);border-radius:8px;padding:7px 13px;color:var(--gold2);font-weight:700;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:5px}
+.btn-gold:hover{background:rgba(212,168,67,0.25)}
 .btn-icon{background:none;border:none;border-radius:6px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text2);font-size:15px}
 .btn-icon:hover{background:rgba(255,255,255,.05);color:var(--text)}
 .wa-btn{background:rgba(37,211,102,0.11);border:1px solid rgba(37,211,102,0.25);border-radius:6px;padding:5px 9px;color:#25d366;cursor:pointer;font-size:11px;display:flex;align-items:center;gap:4px;text-decoration:none;white-space:nowrap}
@@ -66,6 +64,8 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',sans-serif;fo
 .t-quente{background:rgba(239,68,68,0.14);color:#f87171}
 .t-fechando{background:rgba(46,204,113,0.14);color:#4ade80}
 .t-perdido{background:rgba(100,100,100,0.18);color:#888}
+.t-vendido{background:rgba(212,168,67,0.25);color:var(--gold2)}
+.t-reativar{background:rgba(167,139,250,0.18);color:#c4b5fd}
 .lead-meta{display:flex;align-items:center;gap:6px;margin-top:5px;flex-wrap:wrap}
 .tag{font-size:10px;border-radius:4px;padding:2px 6px;font-weight:500}
 .tg{background:rgba(212,168,67,0.1);color:var(--gold)}
@@ -116,9 +116,9 @@ select option{background:var(--bg2)}
 .md-sub{font-size:12px;color:var(--text2);margin-bottom:16px}
 .mini-confirm{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;display:none;align-items:center;justify-content:center;padding:14px}
 .mini-confirm.open{display:flex}
-.mini-box{background:var(--bg2);border:1px solid var(--border);border-radius:13px;padding:18px 20px;max-width:380px;width:100%}
+.mini-box{background:var(--bg2);border:1px solid var(--border);border-radius:13px;padding:18px 20px;max-width:400px;width:100%}
 .mini-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px}
-.mini-sub{font-size:12px;color:var(--text2);margin-bottom:14px;line-height:1.5}
+.mini-sub{font-size:12px;color:var(--text2);margin-bottom:14px;line-height:1.6}
 .mini-row{display:flex;gap:8px;flex-wrap:wrap}
 .po{display:none;position:fixed;inset:0;background:rgba(0,0,0,.68);z-index:200;align-items:flex-start;justify-content:flex-end}
 .po.open{display:flex}
@@ -152,20 +152,41 @@ select option{background:var(--bg2)}
 .crow{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
 .div{height:1px;background:var(--border)}
 .toast-wrap{position:fixed;bottom:18px;right:18px;z-index:500;display:flex;flex-direction:column;gap:8px;pointer-events:none}
-.toast{background:var(--bg2);border:1px solid var(--gold);border-radius:10px;padding:12px 16px;min-width:260px;max-width:320px;pointer-events:all;animation:toastin .3s ease}
+.toast{background:var(--bg2);border:1px solid var(--gold);border-radius:10px;padding:12px 16px;min-width:260px;max-width:340px;pointer-events:all;animation:toastin .3s ease}
 .toast-title{font-size:13px;font-weight:700;color:var(--gold2)}
-.toast-body{font-size:12px;color:var(--text2);margin-top:2px}
+.toast-body{font-size:12px;color:var(--text2);margin-top:2px;line-height:1.5}
 @keyframes toastin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .empty-state{text-align:center;padding:28px 14px;color:var(--text3)}
 .empty-state i{font-size:34px;display:block;margin-bottom:8px}
 .msg-row{background:var(--bg3);border-radius:7px;padding:9px 11px;margin-bottom:5px}
 .msg-txt{font-size:13px;color:var(--text);line-height:1.5;margin-bottom:7px}
 .msg-actions{display:flex;gap:6px;flex-wrap:wrap}
-.alerta-row{display:flex;align-items:flex-start;gap:10px;padding:9px 11px;background:var(--bg3);border-radius:8px;margin-bottom:5px;cursor:pointer;transition:background .15s}
-.alerta-row:hover{background:var(--bg4)}
+
+/* MISSÃO DO DIA */
+.ml{background:var(--bg3);border-radius:10px;margin-bottom:6px;border:1px solid rgba(212,168,67,0.08);overflow:hidden;transition:all .2s}
+.ml:hover{border-color:rgba(212,168,67,0.2)}
+.ml.feito-1{border-color:rgba(46,204,113,0.15)}
+.ml.feito-2{opacity:.42;border-color:rgba(46,204,113,0.2)}
+.ml-top{display:flex;align-items:center;gap:9px;padding:9px 12px;cursor:pointer}
+.ml-pri{font-size:10px;font-weight:800;min-width:22px;text-align:center;padding:2px 5px;border-radius:4px}
+.ml-info{flex:1;min-width:0}
+.ml-nome{font-size:13px;font-weight:600}
+.ml-nome.riscado{text-decoration:line-through;color:var(--text3)}
+.ml-sub{font-size:10px;color:var(--text2);margin-top:1px}
+.ml-acts{display:flex;gap:4px;align-items:center;flex-shrink:0}
+.ml-body{display:none;padding:10px 12px;border-top:1px solid rgba(255,255,255,.04);background:var(--bg4)}
+.ml-body.open{display:block}
+.sug-box{background:var(--bg3);border-radius:8px;padding:10px 12px;margin-bottom:8px}
+.sug-tipo{font-size:10px;font-weight:700;margin-bottom:4px}
+.sug-msg{font-size:12px;color:var(--text);line-height:1.55;margin-bottom:7px}
+.prog-w{background:var(--bg3);border-radius:6px;height:7px;overflow:hidden;margin:4px 0 2px}
+.prog-b{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--gold3),var(--gold2));transition:width .4s}
+.prog-b.full{background:linear-gradient(90deg,#10b981,#4ade80)}
+.sec-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;padding:8px 0 5px;display:flex;align-items:center;gap:5px}
+.turno-box{background:rgba(167,139,250,0.05);border:1px solid rgba(167,139,250,0.15);border-radius:10px;padding:11px 13px;margin-top:8px}
+
 @media(max-width:640px){
   .metrics{grid-template-columns:1fr 1fr}
-  .two-col,.fgrid{grid-template-columns:1fr}
   .sp{width:100vw}
   .nav-tabs .tab-btn span{display:none}
 }
@@ -176,7 +197,7 @@ select option{background:var(--bg2)}
 <div class="header">
   <div class="logo">
     <div class="logo-icon"><i class="ti ti-crown"></i></div>
-    <div><div class="logo-text">Corretor de Milhões</div><div class="logo-sub">Jairo Silva · MCMV na Planta</div></div>
+    <div><div class="logo-text">Corretor de Milhoes</div><div class="logo-sub">Jairo Silva · MCMV na Planta</div></div>
   </div>
   <div class="nav-tabs">
     <button class="tab-btn active" onclick="showTab('dash')" id="tab-dash"><i class="ti ti-layout-dashboard"></i><span> Painel</span></button>
@@ -192,79 +213,76 @@ select option{background:var(--bg2)}
 </div>
 <div class="main">
 
+<!-- DASH -->
 <div id="view-dash">
-  <div id="banner" style="margin-bottom:11px"></div>
   <div class="metrics">
     <div class="mc"><div class="mc-label">Total Leads</div><div class="mc-val" id="m-total">0</div><div class="mc-sub">cadastrados</div></div>
     <div class="mc"><div class="mc-label">Quentes</div><div class="mc-val" id="m-hot" style="color:#f87171">0</div><div class="mc-sub">alta prioridade</div></div>
     <div class="mc"><div class="mc-label">Fechando</div><div class="mc-val" id="m-close" style="color:#4ade80">0</div><div class="mc-sub">negociação final</div></div>
-    <div class="mc"><div class="mc-label">Hoje</div><div class="mc-val" id="m-today" style="color:var(--gold2)">0</div><div class="mc-sub">pendentes</div></div>
+    <div class="mc"><div class="mc-label">Vendidos</div><div class="mc-val" id="m-vend" style="color:var(--gold2)">0</div><div class="mc-sub">contratos</div></div>
   </div>
 
-  <!-- ALERTAS INTELIGENTES -->
-  <div class="sc" id="alertas-wrap" style="margin-bottom:13px">
-    <div class="sh" style="margin-bottom:8px">
-      <span class="st"><i class="ti ti-alert-triangle"></i>Alertas Inteligentes</span>
-      <span id="alertas-count" style="font-size:11px;color:var(--text3)"></span>
+  <div class="sc" style="margin-bottom:13px;border-color:rgba(212,168,67,0.28)">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+      <span style="font-size:14px;font-weight:700;color:var(--gold2);display:flex;align-items:center;gap:7px"><i class="ti ti-checklist"></i>Missao do Dia</span>
+      <span id="dia-prog" style="font-size:12px;font-weight:700;color:var(--gold2)"></span>
     </div>
-    <div id="alertas-list"></div>
+    <div class="prog-w"><div class="prog-b" id="dia-bar" style="width:0%"></div></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;margin-top:3px">
+      <span id="dia-pct" style="font-size:11px;color:var(--text3)"></span>
+      <div id="dia-resumo" style="display:flex;gap:5px;flex-wrap:wrap"></div>
+    </div>
+    <div id="missao-conteudo"></div>
+    <div id="turno2-wrap" style="display:none">
+      <div class="turno-box">
+        <div class="sec-label" style="color:#a78bfa;padding-top:0"><i class="ti ti-moon" style="font-size:13px"></i>2o Contato Noturno</div>
+        <div style="font-size:11px;color:var(--text2);margin-bottom:8px">Fez o 1o contato com esses clientes. Hora do follow-up!</div>
+        <div id="missao-turno2"></div>
+      </div>
+    </div>
+    <div id="reg-dia-mini" style="margin-top:11px"></div>
   </div>
 
-  <!-- META DO DIA -->
   <div class="sc" style="margin-bottom:13px">
-    <div class="sh" style="margin-bottom:8px">
-      <span class="st"><i class="ti ti-target"></i>Meta do Dia</span>
-      <span id="meta-txt" style="font-size:12px;color:var(--text2)"></span>
-    </div>
-    <div style="background:var(--bg3);border-radius:6px;height:10px;overflow:hidden;margin-bottom:8px">
-      <div id="meta-bar" style="height:100%;background:linear-gradient(90deg,var(--gold3),var(--gold2));border-radius:6px;transition:width .4s;width:0%"></div>
-    </div>
-    <div id="meta-resumo" style="display:flex;gap:8px;flex-wrap:wrap"></div>
-  </div>
-
-  <div class="two-col">
-    <div class="sc"><div class="sh"><span class="st"><i class="ti ti-flame"></i>Prioritários</span><button class="btn-sm" onclick="showTab('leads')"><i class="ti ti-arrow-right"></i></button></div><div id="dash-leads"></div></div>
-    <div class="sc"><div class="sh"><span class="st"><i class="ti ti-clock"></i>Hoje</span><button class="btn-sm" onclick="showTab('agenda')"><i class="ti ti-arrow-right"></i></button></div><div id="dash-ag"></div></div>
-  </div>
-
-  <!-- PROTOCOLOS POR TEMPERATURA -->
-  <div class="sc" style="margin-top:13px">
-    <div class="sh" style="margin-bottom:10px">
-      <span class="st"><i class="ti ti-thermometer"></i>Protocolo por Temperatura</span>
-      <span style="font-size:11px;color:var(--text3)">regras automáticas de follow-up</span>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <span style="font-size:13px;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:6px"><i class="ti ti-thermometer"></i>Protocolo por Temperatura</span>
     </div>
     <div id="proto-table"></div>
   </div>
 
-  <!-- REGISTRO DO DIA -->
-  <div class="sc" style="margin-top:13px">
-    <div class="sh" style="margin-bottom:10px">
-      <span class="st"><i class="ti ti-clipboard-list"></i>Registro Completo de Hoje</span>
+  <div class="sc">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <span style="font-size:13px;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:6px"><i class="ti ti-clipboard-list"></i>Registro Completo de Hoje</span>
       <span id="reg-dia-count" style="font-size:11px;color:var(--text3)"></span>
     </div>
     <div id="reg-dia"></div>
   </div>
 </div>
 
+<!-- LEADS -->
 <div id="view-leads" style="display:none">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;gap:7px;flex-wrap:wrap">
     <div style="display:flex;gap:5px;flex-wrap:wrap">
       <button class="btn-sm" onclick="filt('todos')" id="f-todos">Todos</button>
-      <button class="btn-sm" onclick="filt('gelado')" id="f-gelado">🔵 Gelado</button>
-      <button class="btn-sm" onclick="filt('morno')" id="f-morno">🟡 Morno</button>
-      <button class="btn-sm" onclick="filt('quente')" id="f-quente">🔴 Quente</button>
-      <button class="btn-sm" onclick="filt('fechando')" id="f-fechando">🟢 Fechando</button>
+      <button class="btn-sm" onclick="filt('gelado')" id="f-gelado">Gelado</button>
+      <button class="btn-sm" onclick="filt('morno')" id="f-morno">Morno</button>
+      <button class="btn-sm" onclick="filt('quente')" id="f-quente">Quente</button>
+      <button class="btn-sm" onclick="filt('fechando')" id="f-fechando">Fechando</button>
+      <button class="btn-sm" onclick="filt('vendido')" id="f-vendido">Vendido</button>
+      <button class="btn-sm" onclick="filt('reativar')" id="f-reativar">Reativar</button>
     </div>
     <button class="btn-primary" onclick="showTab('novo')"><i class="ti ti-plus"></i> Novo Lead</button>
   </div>
   <div id="leads-list"></div>
 </div>
 
+<!-- AGENDA -->
 <div id="view-agenda" style="display:none">
   <div style="font-size:15px;font-weight:700;color:var(--gold2);margin-bottom:13px">Protocolo de Follow-ups</div>
   <div id="agenda-list"></div>
 </div>
 
+<!-- SPIN -->
 <div id="view-spin" style="display:none">
   <div style="margin-bottom:14px">
     <div style="font-size:15px;font-weight:700;color:var(--gold2)">Roteiro SPIN — MCMV na Planta</div>
@@ -273,45 +291,46 @@ select option{background:var(--bg2)}
   <div id="spin-steps"></div>
 </div>
 
+<!-- NOVO -->
 <div id="view-novo" style="display:none">
   <div class="sc" style="max-width:580px">
-    <div class="st" style="margin-bottom:16px;font-size:15px"><i class="ti ti-user-plus"></i> Cadastrar Novo Lead</div>
+    <div style="font-size:15px;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:7px;margin-bottom:16px"><i class="ti ti-user-plus"></i> Cadastrar Novo Lead</div>
     <div class="fgrid">
-      <div class="fg"><label>Nome completo</label><input type="text" id="f-nome" placeholder="Ex: João Silva"></div>
+      <div class="fg"><label>Nome completo</label><input type="text" id="f-nome" placeholder="Ex: Joao Silva"></div>
       <div class="fg"><label>Telefone (WhatsApp)</label><input type="text" id="f-fone" placeholder="(17) 99999-0000"></div>
       <div class="fg"><label>Protocolo de contato</label>
         <select id="f-prot">
+          <option value="diario">Diario (todo dia)</option>
           <option value="3x_sem">3x/semana (Seg/Qua/Sex)</option>
           <option value="2x_sem">2x/semana (Ter/Qui)</option>
-          <option value="diario">Diário</option>
           <option value="manual">Manual</option>
         </select>
       </div>
-      <div class="fg"><label>Horário preferido</label>
+      <div class="fg"><label>Horario preferido</label>
         <select id="f-hor">
-          <option value="manha">Manhã (9h–12h)</option>
-          <option value="almoco">Almoço (12h–14h)</option>
-          <option value="tarde">Tarde (14h–18h)</option>
-          <option value="noite">Noite (18h–20h)</option>
+          <option value="manha">Manha (9h-12h)</option>
+          <option value="almoco">Almoco (12h-14h)</option>
+          <option value="tarde">Tarde (14h-18h)</option>
+          <option value="noite">Noite (18h-20h)</option>
         </select>
       </div>
       <div class="fg"><label>Origem</label>
         <select id="f-orig">
           <option value="crmfaj">CRMFAJ / TotalK</option>
           <option value="instagram">Instagram</option>
-          <option value="indicacao">Indicação</option>
+          <option value="indicacao">Indicacao</option>
           <option value="whatsapp">WhatsApp direto</option>
           <option value="outro">Outro</option>
         </select>
       </div>
       <div class="fg"><label>Temperatura inicial</label>
         <select id="f-temp">
-          <option value="gelado">🔵 Gelado</option>
-          <option value="morno">🟡 Morno</option>
-          <option value="quente">🔴 Quente</option>
+          <option value="gelado">Gelado</option>
+          <option value="morno">Morno</option>
+          <option value="quente">Quente</option>
         </select>
       </div>
-      <div class="fg full"><label>Observações</label><textarea id="f-obs" rows="2" placeholder="Ex: casal jovem, mora de aluguel..."></textarea></div>
+      <div class="fg full"><label>Observacoes</label><textarea id="f-obs" rows="2" placeholder="Ex: casal jovem, mora de aluguel..."></textarea></div>
     </div>
     <div style="display:flex;gap:8px;margin-top:13px">
       <button class="btn-primary" onclick="salvarLead()"><i class="ti ti-device-floppy"></i> Salvar Lead</button>
@@ -323,7 +342,7 @@ select option{background:var(--bg2)}
 </div>
 </div>
 
-<!-- PANEL -->
+<!-- PANEL LATERAL -->
 <div class="po" id="panel-overlay">
 <div class="sp">
   <div class="ph">
@@ -341,29 +360,39 @@ select option{background:var(--bg2)}
     </div>
     <div class="ebar" id="p-ebar"></div>
     <select id="p-etapa-sel" style="font-size:12px" onchange="setEtapa(parseInt(this.value))">
-      <option value="1">1 — Abordagem + 4 Perguntas</option>
-      <option value="2">2 — Situação (S)</option>
-      <option value="3">3 — Problema (P)</option>
-      <option value="4">4 — Implicação (I)</option>
-      <option value="5">5 — Necessidade (N)</option>
-      <option value="6">6 — Entrega da Simulação</option>
-      <option value="7">7 — Documentação para Aprovação</option>
+      <option value="1">1 - Abordagem + 4 Perguntas</option>
+      <option value="2">2 - Situacao (S)</option>
+      <option value="3">3 - Problema (P)</option>
+      <option value="4">4 - Implicacao (I)</option>
+      <option value="5">5 - Necessidade (N)</option>
+      <option value="6">6 - Entrega da Simulacao</option>
+      <option value="7">7 - Documentacao para Aprovacao</option>
     </select>
   </div>
   <div>
     <div class="slabel">Temperatura</div>
     <div class="sp-pills" id="p-pills"></div>
   </div>
+  <!-- REATIVAR EM DATA -->
+  <div id="p-reativar-wrap" style="display:none">
+    <div class="slabel">Reativar em</div>
+    <div style="display:flex;gap:7px;align-items:center">
+      <input type="date" id="p-reativar-dt" style="flex:1;font-size:12px">
+      <button class="btn-sm" onclick="salvarReativar()"><i class="ti ti-device-floppy"></i> Salvar</button>
+      <button class="btn-sm" style="color:var(--red)" onclick="cancelarReativar()">Cancelar</button>
+    </div>
+    <div style="font-size:11px;color:var(--text2);margin-top:5px">Na data informada o lead volta para a Missao do Dia automaticamente.</div>
+  </div>
   <div>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
-      <div class="slabel" style="margin:0">4 Perguntas da Simulação</div>
+      <div class="slabel" style="margin:0">4 Perguntas da Simulacao</div>
       <button class="btn-sm" style="font-size:11px" onclick="abrirSim()"><i class="ti ti-edit"></i> Editar</button>
     </div>
     <div class="sim-grid" id="p-sim"></div>
   </div>
   <div id="p-docs-wrap" style="display:none">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
-      <div class="slabel" style="margin:0">Documentação</div>
+      <div class="slabel" style="margin:0">Documentacao</div>
       <button class="btn-sm" style="font-size:11px" onclick="abrirPerfil()"><i class="ti ti-settings"></i> Perfil</button>
     </div>
     <div id="p-docs"></div>
@@ -376,7 +405,7 @@ select option{background:var(--bg2)}
     <div id="p-msgs"></div>
   </div>
   <div>
-    <div class="slabel">Histórico</div>
+    <div class="slabel">Historico</div>
     <div id="p-hist"></div>
   </div>
   <div>
@@ -384,33 +413,39 @@ select option{background:var(--bg2)}
     <textarea class="nt" id="p-note" rows="2" placeholder="O que foi conversado?"></textarea>
     <div class="crow">
       <button class="btn-green" onclick="reg('atendeu')"><i class="ti ti-check"></i> Atendeu</button>
-      <button class="btn-sm" style="color:var(--red)" onclick="reg('nao_atendeu')"><i class="ti ti-phone-off"></i> Não atendeu</button>
-      <button class="btn-sm" onclick="reg('nota')"><i class="ti ti-notes"></i> Anotação</button>
+      <button class="btn-sm" style="color:var(--red)" onclick="reg('nao_atendeu')"><i class="ti ti-phone-off"></i> Nao atendeu</button>
+      <button class="btn-sm" onclick="reg('nota')"><i class="ti ti-notes"></i> Anotacao</button>
     </div>
     <div style="margin-top:7px">
       <button class="wa-btn" onclick="abrirWA()"><i class="ti ti-brand-whatsapp"></i> Abrir WhatsApp e registrar contato</button>
     </div>
   </div>
   <div class="div"></div>
-  <div style="display:flex;justify-content:flex-end">
-    <button class="btn-red" onclick="deletarLead()"><i class="ti ti-trash"></i> Remover lead</button>
+  <!-- ACOES FINAIS -->
+  <div>
+    <div class="slabel">Acoes do Lead</div>
+    <div style="display:flex;gap:7px;flex-wrap:wrap">
+      <button class="btn-gold" onclick="marcarVendido()"><i class="ti ti-trophy"></i> Vendido!</button>
+      <button class="btn-sm" onclick="abrirReativar()"><i class="ti ti-calendar-event"></i> Reativar em data</button>
+      <button class="btn-red" onclick="deletarLead()"><i class="ti ti-trash"></i> Remover</button>
+    </div>
   </div>
 </div>
 </div>
 
-<!-- MODAL SIMULAÇÃO -->
+<!-- MODAL SIM -->
 <div class="mo" id="modal-sim">
   <div class="md">
-    <div class="md-title"><i class="ti ti-clipboard-list"></i>4 Perguntas da Simulação</div>
+    <div class="md-title"><i class="ti ti-clipboard-list"></i>4 Perguntas da Simulacao</div>
     <div class="md-sub">Preencha conforme o cliente responder</div>
     <div style="display:flex;flex-direction:column;gap:10px">
-      <div class="fg"><label>1️⃣ Renda bruta familiar (R$)</label><input id="s-renda" placeholder="Ex: R$ 4.500"></div>
-      <div class="fg"><label>2️⃣ Data de nascimento do titular</label><input id="s-nasc" placeholder="DD/MM/AAAA"></div>
-      <div class="fg"><label>3️⃣ Tem mais de 3 anos de carteira assinada somados?</label>
-        <select id="s-cart"><option value="">Não informado</option><option value="sim">Sim</option><option value="nao">Não</option></select>
+      <div class="fg"><label>1 - Renda bruta familiar (R$)</label><input id="s-renda" placeholder="Ex: R$ 4.500"></div>
+      <div class="fg"><label>2 - Data de nascimento do titular</label><input id="s-nasc" placeholder="DD/MM/AAAA"></div>
+      <div class="fg"><label>3 - Tem mais de 3 anos de carteira assinada?</label>
+        <select id="s-cart"><option value="">Nao informado</option><option value="sim">Sim</option><option value="nao">Nao</option></select>
       </div>
-      <div class="fg"><label>4️⃣ Tem filhos ou dependentes?</label>
-        <select id="s-dep"><option value="">Não informado</option><option value="nao">Não tem</option><option value="sim_1">1 filho/dependente</option><option value="sim_2">2 filhos/dependentes</option><option value="sim_3p">3 ou mais</option></select>
+      <div class="fg"><label>4 - Tem filhos ou dependentes?</label>
+        <select id="s-dep"><option value="">Nao informado</option><option value="nao">Nao tem</option><option value="sim_1">1 filho/dependente</option><option value="sim_2">2 filhos/dependentes</option><option value="sim_3p">3 ou mais</option></select>
       </div>
     </div>
     <div style="display:flex;gap:7px;margin-top:14px">
@@ -420,20 +455,20 @@ select option{background:var(--bg2)}
   </div>
 </div>
 
-<!-- MODAL PERFIL DOCS -->
+<!-- MODAL PERFIL -->
 <div class="mo" id="modal-perfil">
   <div class="md">
     <div class="md-title"><i class="ti ti-id-badge"></i>Perfil do Cliente</div>
     <div class="md-sub">Define quais documentos solicitar</div>
     <div style="display:flex;flex-direction:column;gap:10px">
       <div class="fg"><label>Tipo de renda</label>
-        <select id="pr-tipo"><option value="clt">CLT — Carteira Assinada</option><option value="autonomo">Autônomo / Informal</option></select>
+        <select id="pr-tipo"><option value="clt">CLT - Carteira Assinada</option><option value="autonomo">Autonomo / Informal</option></select>
       </div>
       <div class="fg"><label>Estado civil</label>
-        <select id="pr-civil"><option value="solteiro">Solteiro(a)</option><option value="casado">Casado(a) / União estável</option></select>
+        <select id="pr-civil"><option value="solteiro">Solteiro(a)</option><option value="casado">Casado(a) / Uniao estavel</option></select>
       </div>
       <div class="fg"><label>Tem filhos/dependentes?</label>
-        <select id="pr-filhos"><option value="nao">Não</option><option value="sim">Sim</option></select>
+        <select id="pr-filhos"><option value="nao">Nao</option><option value="sim">Sim</option></select>
       </div>
     </div>
     <div style="display:flex;gap:7px;margin-top:14px">
@@ -449,9 +484,48 @@ select option{background:var(--bg2)}
     <div class="mini-title"><i class="ti ti-brand-whatsapp" style="color:#25d366"></i> Abrir WhatsApp</div>
     <div class="mini-sub" id="confirm-wa-txt"></div>
     <div class="mini-row">
-      <button class="btn-primary" onclick="confirmarWA(true)"><i class="ti ti-check"></i> Sim, avançar etapa</button>
-      <button class="btn-sm" onclick="confirmarWA(false)">Só abrir</button>
+      <button class="btn-primary" onclick="confirmarWA(true)"><i class="ti ti-check"></i> Sim, avancar etapa</button>
+      <button class="btn-sm" onclick="confirmarWA(false)">So abrir</button>
       <button class="btn-sm" style="color:var(--red)" onclick="closeMo('confirm-wa')">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 2o CONTATO -->
+<div class="mini-confirm" id="modal-segundo">
+  <div class="mini-box">
+    <div class="mini-title" style="color:#a78bfa"><i class="ti ti-moon"></i> 2o Contato do Dia</div>
+    <div class="mini-sub" id="modal-segundo-txt"></div>
+    <div class="mini-row" id="modal-segundo-btns"></div>
+  </div>
+</div>
+
+<!-- MODAL VENDIDO -->
+<div class="mini-confirm" id="modal-vendido">
+  <div class="mini-box">
+    <div class="mini-title" style="color:var(--gold2)"><i class="ti ti-trophy"></i> Parabens! Lead Vendido</div>
+    <div class="mini-sub" id="modal-vendido-txt"></div>
+    <div class="mini-row">
+      <button class="btn-gold" onclick="confirmarVendido()"><i class="ti ti-check"></i> Confirmar venda</button>
+      <button class="btn-sm" onclick="closeMo('modal-vendido')">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL REATIVAR EM DATA -->
+<div class="mini-confirm" id="modal-reativar">
+  <div class="mini-box">
+    <div class="mini-title" style="color:#a78bfa"><i class="ti ti-calendar-event"></i> Reativar em data</div>
+    <div class="mini-sub" id="modal-reativar-txt"></div>
+    <div class="fg" style="margin-bottom:12px">
+      <label>Data de reativacao</label>
+      <input type="date" id="modal-reativar-dt" style="font-size:13px">
+    </div>
+    <div style="font-size:11px;color:var(--text2);margin-bottom:14px">Na data informada o lead volta automaticamente para a Missao do Dia.</div>
+    <div class="mini-row">
+      <button class="btn-primary" onclick="confirmarReativar()"><i class="ti ti-device-floppy"></i> Salvar</button>
+      <button class="btn-sm" style="color:var(--red)" onclick="limparReativar()"><i class="ti ti-x"></i> Remover data</button>
+      <button class="btn-sm" onclick="closeMo('modal-reativar')">Cancelar</button>
     </div>
   </div>
 </div>
@@ -459,266 +533,442 @@ select option{background:var(--bg2)}
 <div class="toast-wrap" id="toast-wrap"></div>
 
 <script>
-const DIAS=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+const DIAS=['Dom','Seg','Ter','Qua','Qui','Sex','Sab'];
 const MESES=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-const ETAPAS_LABELS=['Abordagem + 4 Perguntas','Situação (S)','Problema (P)','Implicação (I)','Necessidade (N)','Entrega da Simulação','Documentação para Aprovação'];
+const EL=['Abordagem + 4 Perguntas','Situacao (S)','Problema (P)','Implicacao (I)','Necessidade (N)','Entrega da Simulacao','Documentacao para Aprovacao'];
 let leads=JSON.parse(localStorage.getItem('cdm2_leads')||'[]');
-let sel=null, cf='todos', notifInt=null, waTarget=null, _avancoId=null;
+let sel=null,cf='todos',notifInt=null,waTarget=null,_avancoId=null,_2fila=[],_2idx=0;
 
 function save(){localStorage.setItem('cdm2_leads',JSON.stringify(leads))}
-
 function now(){
   const d=new Date();
   return{iso:d.toISOString().split('T')[0],ts:d.toISOString(),
-    label:`${d.getDate()} ${MESES[d.getMonth()]} ${d.getFullYear()} às ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`}
+    label:`${d.getDate()} ${MESES[d.getMonth()]} ${d.getFullYear()} as ${pad(d.getHours())}:${pad(d.getMinutes())}`}
 }
-function fmtTs(ts){
-  if(!ts)return'';
-  const d=new Date(ts);
-  return`${d.getDate()} ${MESES[d.getMonth()]} às ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
-}
-function getHL(h){return{manha:'9h–12h',almoco:'12h–14h',tarde:'14h–18h',noite:'18h–20h'}[h]||h}
-function getHL0(h){return{manha:'9h',almoco:'12h',tarde:'14h',noite:'18h'}[h]||h}
-function deveLigar(l){const d=new Date().getDay();if(l.prot==='diario')return d>=1&&d<=5;if(l.prot==='3x_sem')return[1,3,5].includes(d);if(l.prot==='2x_sem')return[2,4].includes(d);return false}
-function jaHoje(l){return(l.hist||[]).some(h=>h.iso===now().iso&&h.tipo!=='nota')}
+function pad(n){return String(n).padStart(2,'0')}
+function fmtTs(ts){if(!ts)return'';const d=new Date(ts);return`${d.getDate()} ${MESES[d.getMonth()]} as ${pad(d.getHours())}:${pad(d.getMinutes())}`}
+function getHL(h){return{manha:'9h-12h',almoco:'12h-14h',tarde:'14h-18h',noite:'18h-20h'}[h]||h}
+function hj(){return now().iso}
 
-function toast(title,body,dur=4000){
-  const w=document.getElementById('toast-wrap');
-  const t=document.createElement('div');t.className='toast';
-  t.innerHTML=`<div class="toast-title">${title}</div><div class="toast-body">${body}</div>`;
-  w.appendChild(t);setTimeout(()=>t.remove(),dur);
-}
-
-async function ativarNotif(){
-  if(!('Notification' in window)){toast('Aviso','Seu navegador não suporta notificações.');return}
-  const p=await Notification.requestPermission();
-  if(p==='granted'){
-    document.getElementById('notif-label').textContent=' ON';
-    document.getElementById('notif-btn').style.color='#4ade80';
-    iniciarNotif();
-    new Notification('Corretor de Milhões',{body:'Alertas ativados!'});
-    toast('Alertas ativados!','Você receberá notificações e pop-ups nos horários dos seus leads.');
-  } else toast('Permissão negada','Ative nas configurações do navegador.');
+// Um lead esta ativo (aparece na missao) se nao for perdido/vendido
+// e se nao tiver data de reativacao futura
+function leadAtivo(l){
+  if(['perdido','vendido'].includes(l.temp))return false;
+  if(l.reativarEm){
+    // se a data de reativacao chegou ou ja passou, volta para ativo
+    return l.reativarEm<=hj();
+  }
+  return true;
 }
 
-function iniciarNotif(){
-  if(notifInt)clearInterval(notifInt);
-  notifInt=setInterval(()=>{
-    const n=new Date(),h=n.getHours(),m=n.getMinutes();
-    leads.forEach(l=>{
-      if(!deveLigar(l)||jaHoje(l))return;
-      const map={manha:[9,0],almoco:[12,0],tarde:[14,0],noite:[18,0]};
-      const [th,tm]=map[l.hor]||[9,0];
-      if(h===th&&m===tm){
-        toast(`🔔 Hora de contatar: ${l.nome}`,`${getHL(l.hor)} · Etapa ${l.etapa||1}/7`,8000);
-        if(Notification.permission==='granted') new Notification(`Contatar: ${l.nome}`,{body:`${getHL(l.hor)} · Etapa ${l.etapa||1}/7`});
-      }
-    });
-  },60000);
+function fezContato(l,segundo){
+  return(l.hist||[]).some(h=>h.iso===hj()&&
+    (h.tipo==='atendeu'||h.tipo==='nao_atendeu'||h.tipo==='wa')&&
+    (segundo?h.segundo===true:!h.segundo));
 }
 
-// ── ALERTAS INTELIGENTES ──────────────────────────────────────
-function ultimaInteracao(l){
+// Prioridade: fechando-docs-ok=0, fechando=1, quente=2, morno=3, gelado=4
+function priLead(l){
+  if(l.temp==='fechando'){
+    const ok=Object.values(l.docs||{}).filter(Boolean).length;
+    const tot=getDocList(l.perfil).length;
+    return(ok>=tot&&tot>0)?0:1;
+  }
+  return{quente:2,morno:3,gelado:4}[l.temp]??5;
+}
+function ordenar(lista){
+  return[...lista].sort((a,b)=>{
+    const d=priLead(a)-priLead(b);
+    if(d!==0)return d;
+    const da=diasDesde(ultimaInt(a))??99;
+    const db=diasDesde(ultimaInt(b))??99;
+    return db-da;
+  });
+}
+
+function ultimaInt(l){
   const h=(l.hist||[]).filter(x=>x.tipo==='atendeu'||x.tipo==='nao_atendeu'||x.tipo==='wa');
   if(!h.length)return null;
   return h.reduce((a,b)=>new Date(a.ts)>new Date(b.ts)?a:b).ts;
 }
-function diasDesde(ts){
-  if(ts===null)return null;
-  return Math.floor((Date.now()-new Date(ts))/(86400000));
+function diasDesde(ts){if(!ts)return null;return Math.floor((Date.now()-new Date(ts))/86400000)}
+
+// SUGESTAO DE MENSAGEM INTELIGENTE
+function sugerir(l){
+  const n=l.nome.split(' ')[0];
+  const t=l.temp,e=parseInt(l.etapa)||1;
+  const docsOk=Object.values(l.docs||{}).filter(Boolean).length>=getDocList(l.perfil).length&&getDocList(l.perfil).length>0;
+
+  if(t==='vendido')
+    return{cor:'#f0c060',ico:'ti-trophy',tipo:'Pos-venda — Fidelizacao',
+      msg:`Oi ${n}! Aqui e o Jairo. So passando para saber como voce esta se sentindo com relacao ao novo lar. Qualquer duvida no processo, pode me chamar a qualquer hora! Muito feliz por voce.`};
+  if(t==='fechando'&&docsOk)
+    return{cor:'#4ade80',ico:'ti-file-check',tipo:'Fechando — Docs completos — Manter aquecido',
+      msg:`Bom dia, ${n}! Aqui e o Jairo. Tudo encaminhado por aqui, seu processo esta sendo acompanhado de perto! Alguma duvida ou novidade da sua parte?`};
+  if(t==='fechando')
+    return{cor:'#4ade80',ico:'ti-files',tipo:'Fechando — Solicitar documentacao',
+      msg:`Bom dia, ${n}! Aqui e o Jairo. So passando para manter contato e verificar o proximo documento do seu processo. Esta tudo bem por ai?`};
+  if(t==='quente'&&e>=6)
+    return{cor:'#f87171',ico:'ti-calculator',tipo:'Quente — Apresentar simulacao',
+      msg:`Oi ${n}! Finalizei a sua simulacao com os numeros reais do MCMV. Os valores ficaram otimos! Posso te mostrar agora?`};
+  if(t==='quente')
+    return{cor:'#f87171',ico:'ti-flame',tipo:'Quente — Manter engajamento',
+      msg:`Bom dia, ${n}! Aqui e o Jairo. So passando para saber se voce ja pensou mais sobre o imovel proprio e se tem alguma duvida que eu possa tirar hoje.`};
+  if(t==='morno')
+    return{cor:'#fbbf24',ico:'ti-sun',tipo:'Morno — Nutrir interesse',
+      msg:`Oi ${n}, bom dia! Aqui e o Jairo. Queria compartilhar uma novidade do empreendimento que pode te interessar. Posso te mandar?`};
+  if(e===1)
+    return{cor:'#7db9ff',ico:'ti-snowflake',tipo:'Gelado — Primeira abordagem',
+      msg:`Oi ${n}! Aqui e o Jairo, corretor de imoveis MCMV. Vi que voce tem interesse em imovel proprio — posso te mostrar como funciona o programa? Sem compromisso!`};
+  return{cor:'#7db9ff',ico:'ti-phone',tipo:'Gelado — Manter contato',
+    msg:`Oi ${n}, tudo bem? Aqui e o Jairo. So passando para manter contato e ver se posso te ajudar com algo sobre o imovel proprio.`};
 }
 
-const REGRAS=[
-  {pri:1,cor:'#f87171',ic:'ti-flame',
-   check(l){if(l.temp!=='fechando')return false;const d=diasDesde(ultimaInteracao(l));return d===null||d>=1;},
-   msg(l){const d=diasDesde(ultimaInteracao(l));return`🚨 URGENTE — ${l.nome} está Fechando e sem contato há ${d===null?'nunca':d+' dia(s)'}. Contate agora!`;}},
-  {pri:2,cor:'#fb923c',ic:'ti-alert-circle',
-   check(l){if(l.temp!=='quente')return false;const d=diasDesde(ultimaInteracao(l));return d===null||d>=2;},
-   msg(l){const d=diasDesde(ultimaInteracao(l));return`🔴 ${l.nome} está Quente e sem contato há ${d===null?'nunca':d+' dia(s)'}. Não deixe esfriar!`;}},
-  {pri:3,cor:'#fbbf24',ic:'ti-thermometer',
-   check(l){if(l.temp!=='morno')return false;const d=diasDesde(ultimaInteracao(l));return d===null||d>=3;},
-   msg(l){const d=diasDesde(ultimaInteracao(l));return`🟡 ${l.nome} está Morno há ${d===null?'nunca':d+' dia(s)'} sem contato. Hora de nutrir!`;}},
-  {pri:4,cor:'#7db9ff',ic:'ti-snowflake',
-   check(l){if(l.temp!=='gelado')return false;const d=diasDesde(ultimaInteracao(l));return d===null||d>=4;},
-   msg(l){const d=diasDesde(ultimaInteracao(l));return`🔵 ${l.nome} está Gelado há ${d===null?'nunca':d+' dia(s)'} sem contato. Tente uma abordagem leve.`;}},
-  {pri:2,cor:'#f87171',ic:'ti-calculator',
-   check(l){if(l.temp==='perdido')return false;const s=l.sim||{};return!(s.renda&&s.nasc&&s.cart&&s.dep);},
-   msg(l){return`📋 ${l.nome} — Simulação incompleta. Colete as 4 perguntas para avançar.`;}},
-  {pri:2,cor:'#fb923c',ic:'ti-files',
-   check(l){
-     if(parseInt(l.etapa)<6||l.temp==='perdido')return false;
-     const ok=Object.values(l.docs||{}).filter(Boolean).length;
-     const tot=getDocList(l.perfil).length;
-     if(ok>=tot)return false;
-     const d=diasDesde(ultimaInteracao(l));
-     return d!==null&&d>=2;
-   },
-   msg(l){
-     const ok=Object.values(l.docs||{}).filter(Boolean).length;
-     const tot=getDocList(l.perfil).length;
-     const d=diasDesde(ultimaInteracao(l));
-     return`📁 ${l.nome} — ${ok}/${tot} documentos. Sem movimentação há ${d} dia(s). Solicite o próximo.`;}},
-  {pri:5,cor:'#9ca3af',ic:'ti-refresh',
-   check(l){if(l.temp!=='gelado')return false;const d=diasDesde(ultimaInteracao(l));return d!==null&&d>=14;},
-   msg(l){const d=diasDesde(ultimaInteracao(l));return`⚫ ${l.nome} — Gelado há ${d} dias. Considere reativação ou marcar como perdido.`;}}
-];
-
-function gerarAlertas(){
-  const lista=[];
-  leads.forEach(l=>{
-    if(l.temp==='perdido')return;
-    REGRAS.forEach(r=>{if(r.check(l))lista.push({...r,lead:l,mensagem:r.msg(l)});});
-  });
-  return lista.sort((a,b)=>a.pri-b.pri);
-}
-
-function renderAlertas(){
-  const el=document.getElementById('alertas-list');
-  const ct=document.getElementById('alertas-count');
-  const wrap=document.getElementById('alertas-wrap');
-  if(!el||!ct||!wrap)return;
-  const alertas=gerarAlertas();
-  ct.textContent=`${alertas.length} alerta${alertas.length!==1?'s':''}`;
-  wrap.style.borderColor=alertas.length?'rgba(251,146,60,0.35)':'rgba(46,204,113,0.25)';
-  if(!alertas.length){
-    el.innerHTML=`<div style="display:flex;align-items:center;gap:8px;color:#4ade80;font-size:13px;padding:2px 0"><i class="ti ti-circle-check" style="font-size:17px"></i>Tudo em dia! Nenhum lead precisa de atenção agora.</div>`;
-    return;
-  }
-  const visiveis=alertas.slice(0,8);
-  el.innerHTML=visiveis.map(a=>`
-    <div class="alerta-row" style="border-left:3px solid ${a.cor}" onclick="openPanel('${a.lead.id}')">
-      <i class="ti ${a.ic}" style="color:${a.cor};font-size:18px;flex-shrink:0;margin-top:1px"></i>
-      <div style="flex:1;min-width:0">
-        <div style="font-size:13px;color:var(--text);line-height:1.4">${a.mensagem}</div>
-        <div style="font-size:10px;color:var(--text3);margin-top:3px">Clique para abrir · ${fmtTs(ultimaInteracao(a.lead))||'sem interações'}</div>
-      </div>
-      <button class="wa-btn" style="font-size:10px;flex-shrink:0" onclick="event.stopPropagation();abrirWADireto('${a.lead.id}')"><i class="ti ti-brand-whatsapp"></i></button>
-    </div>`).join('');
-  if(alertas.length>8) el.innerHTML+=`<div style="font-size:12px;color:var(--text3);text-align:center;padding:6px 0">+${alertas.length-8} alerta(s) — resolva os acima primeiro.</div>`;
-}
-
-// notificações de alerta a cada 30 min + ao abrir
-function iniciarAlertasNotif(){
-  setTimeout(dispararAlertasNotif,4000);
-  setInterval(dispararAlertasNotif,30*60*1000);
-}
-function dispararAlertasNotif(){
-  const alertas=gerarAlertas();
-  if(!alertas.length)return;
-  const urgentes=alertas.filter(a=>a.pri<=2);
-  if(urgentes.length){
-    toast(`🚨 ${urgentes.length} alerta(s) urgente(s)`,urgentes.slice(0,2).map(a=>a.mensagem).join(' | '),9000);
-    if(Notification.permission==='granted')
-      urgentes.slice(0,3).forEach(a=>new Notification(`⚡ ${a.lead.nome}`,{body:a.mensagem}));
-  } else {
-    toast(`📋 ${alertas.length} lead(s) precisam de atenção`,alertas.slice(0,2).map(a=>a.mensagem).join(' | '),7000);
-  }
-}
-// ─────────────────────────────────────────────────────────────
-
-const SPIN=[
-  {num:1,titulo:'Abordagem + 4 Perguntas',badge:'Etapa 1',cor:'#4a9eff',bgc:'rgba(74,158,255,0.12)',
-   intro:'Objetivo: criar conexão e já coletar as 4 perguntas essenciais para a simulação.',
-   qs:['Oi [nome], tudo bem? Aqui é o Jairo, corretor de imóveis. Vi que você demonstrou interesse em imóvel próprio — posso tirar suas dúvidas agora? 😊','Para já te mostrar as condições reais e ver se você se encaixa no programa, preciso de 4 informações rápidas. Pode me ajudar?','1️⃣ Qual é a renda bruta total da sua família por mês? (Pode ser aproximado)','2️⃣ Qual a sua data de nascimento?','3️⃣ Você tem mais de 3 anos de carteira assinada, somando todos os empregos?','4️⃣ Você tem filhos ou dependentes?','Ótimo! Com essas informações já consigo montar uma simulação personalizada pra você. Posso te mostrar agora?'],
-   dica:'Colete as 4 perguntas no 1º contato sempre. Elas definem a faixa MCMV e o subsídio possível.'},
-  {num:2,titulo:'Situação (S)',badge:'SPIN — S',cor:'#f59e0b',bgc:'rgba(245,158,11,0.14)',
-   intro:'Objetivo: entender o cenário atual do cliente. Ouça mais do que fale.',
-   qs:['Você está morando em casa alugada, própria ou com a família hoje?','Quanto você paga de aluguel por mês?','Há quanto tempo você está nessa situação?','Tem mais alguém na família que trabalha? Qual a renda total da casa?','É você sozinho no financiamento ou vai entrar com alguém junto?'],
-   dica:'Anote tudo no histórico. Essas respostas alimentam a Implicação.'},
-  {num:3,titulo:'Problema (P)',badge:'SPIN — P',cor:'#ef4444',bgc:'rgba(239,68,68,0.14)',
-   intro:'Objetivo: fazer o cliente verbalizar as insatisfações com a situação atual.',
-   qs:['O que te incomoda mais em morar de aluguel hoje?','Você já passou pela situação do dono pedir o imóvel de volta ou subir o aluguel de repente?','Você sente que o dinheiro do aluguel é "jogado fora" todo mês?','O espaço onde você mora hoje atende bem a sua família?','O que falta no lugar onde você mora que você gostaria de ter no imóvel próprio?'],
-   dica:'Não interrompa. Escuta ativa é tudo aqui.'},
-  {num:4,titulo:'Implicação (I)',badge:'SPIN — I',cor:'#dc2626',bgc:'rgba(220,38,38,0.14)',
-   intro:'Objetivo: mostrar o CUSTO REAL de continuar como está.',
-   qs:['Se você somar tudo que já pagou de aluguel nesses anos... quanto daria? Esse valor poderia ter sido a entrada do seu imóvel próprio.','Daqui a 5 anos, se você ainda estiver no aluguel, como você vai se sentir com relação a isso?','E se o proprietário resolver vender o imóvel agora — você teria para onde ir sem stress?','Com os filhos crescendo, o espaço vai continuar sendo suficiente?','No aluguel você não está construindo patrimônio nenhum. Isso te preocupa pensando no futuro da sua família?'],
-   dica:'O desconforto aqui é o gatilho para a decisão.'},
-  {num:5,titulo:'Necessidade (N)',badge:'SPIN — N',cor:'#a78bfa',bgc:'rgba(167,139,250,0.14)',
-   intro:'Objetivo: fazer o cliente descrever a solução com as próprias palavras.',
-   qs:['Como seria a sua vida tendo o imóvel próprio, pagando uma parcela igual ou menor ao que você paga de aluguel hoje?','O que mudaria pra sua família se vocês tivessem um lugar definitivo e seguro pra morar?','Se eu te mostrar que é possível sair do aluguel com subsídio do governo, você toparia ver as condições?','O que é mais importante pra você: localização, tamanho ou a parcela caber no bolso?','Se a parcela ficasse igual ou menor ao aluguel atual, faria sentido comprar agora?'],
-   dica:'Deixe o cliente se convencer. Anote tudo.'},
-  {num:6,titulo:'Entrega da Simulação',badge:'Simulação',cor:'#10b981',bgc:'rgba(16,185,129,0.14)',
-   intro:'Objetivo: apresentar os números reais, mostrar que é viável e preparar o cliente para a aprovação na Caixa.',
-   qs:['Com base na sua renda de [valor], você se enquadra no Minha Casa Minha Vida — o governo subsidia parte do valor e as condições são bem melhores que o mercado.','Olhando os números: sua parcela ficaria em torno de [valor] por mês — isso é menor do que seu aluguel atual, sabia?','O imóvel na planta é o melhor momento para comprar: você paga o preço de hoje e recebe valorizado na entrega.','[nome], gostou da simulação? O próximo passo é submeter sua análise de crédito na Caixa Econômica dentro do programa — é gratuito e sem compromisso.','Para eu dar entrada na sua aprovação, preciso de alguns documentos. Vou te pedindo um de cada vez pelo WhatsApp, combinado? É bem tranquilo. 😊'],
-   dica:'Após a simulação, direcione imediatamente para os documentos. Sem documentos não há aprovação.'},
-  {num:7,titulo:'Documentação para Aprovação',badge:'Docs',cor:'#4ade80',bgc:'rgba(74,222,128,0.14)',
-   intro:'Objetivo: solicitar os documentos um a um para submeter a análise de crédito na Caixa. No ritmo do cliente.',
-   qs:['[nome], vou te mandar agora o primeiro documento que preciso. Assim que você me enviar, já peço o próximo — é um de cada vez pra facilitar pra você. 😊','Assim que eu tiver tudo, dou entrada na sua análise de crédito na Caixa Econômica dentro do Minha Casa Minha Vida.','Qualquer dúvida sobre qualquer documento, me chama aqui — sou eu que acompanho tudo até a aprovação.','[nome], recebi seu documento! Obrigado. Já vou te passar o próximo.'],
-   dica:'Nunca mande a lista inteira — o cliente se assusta. Um documento por vez, no ritmo dele.'}
-];
-
-function getDocList(p){
-  p=p||{tipo:'clt',civil:'solteiro',filhos:'nao'};
-  const isCLT=p.tipo==='clt';
-  let docs=[
-    {n:'RG ou CNH do titular (frente e verso)',w:'Documento de identidade oficial — obrigatório para abrir o processo de financiamento.'},
-    {n:'Certidão de nascimento do titular',w:'Comprova estado civil e dados pessoais para o contrato.'},
-    isCLT?{n:'3 últimos holerites do titular',w:'Comprovam a renda mensal para a análise de crédito e cálculo das parcelas.'}
-         :{n:'Extrato bancário dos últimos 6 meses do titular',w:'Para autônomos substitui o holerite — comprova entrada de renda regular na conta.'},
-    {n:'Extrato da Carteira de Trabalho Digital (CTPS) do titular',w:'Confirma o histórico de vínculo empregatício e tempo de trabalho registrado.'},
-    {n:'Comprovante de endereço atualizado',w:'Pode estar no nome de outra pessoa — comprova onde você reside hoje.'},
-  ];
-  if(p.filhos==='sim') docs.push({n:'Certidão de nascimento dos filhos/dependentes',w:'Famílias com dependentes têm acesso a maior subsídio no MCMV.'});
-  if(p.civil==='casado'){
-    docs.push({n:'Certidão de casamento ou declaração de união estável',w:'Obrigatória quando há cônjuge — o nome entra no contrato.'});
-    docs.push({n:'RG ou CNH do cônjuge (frente e verso)',w:'O cônjuge entra como co-titular — precisa dos mesmos documentos de identidade.'});
-    docs.push({n:'Certidão de nascimento do cônjuge',w:'Comprova estado civil e dados do co-titular.'});
-    docs.push(isCLT?{n:'3 últimos holerites do cônjuge',w:'A renda do cônjuge é somada — aumenta o valor que podem financiar juntos.'}
-                   :{n:'Extrato bancário dos últimos 6 meses do cônjuge',w:'Como co-titular autônomo, também precisa comprovar renda pelo extrato.'});
-    docs.push({n:'Extrato da CTPS digital do cônjuge',w:'Confirma o histórico de trabalho do co-titular.'});
-  }
-  return docs;
-}
-
-function showTab(t){
-  ['dash','leads','agenda','spin','novo'].forEach(x=>{
-    document.getElementById('view-'+x).style.display=x===t?'':'none';
-    const b=document.getElementById('tab-'+x);if(b)b.classList.toggle('active',x===t);
-  });
-  if(t==='dash')renderDash();
-  if(t==='leads')renderLeads(cf);
-  if(t==='agenda')renderAgenda();
-  if(t==='spin')renderSpin();
-}
+// RENDER MISSAO DO DIA — otimizado para muitos leads (virtual scroll simples)
+let _missaoPag=0;
+const POR_PAG=30;
 
 function renderDash(){
   document.getElementById('m-total').textContent=leads.length;
   document.getElementById('m-hot').textContent=leads.filter(l=>l.temp==='quente').length;
   document.getElementById('m-close').textContent=leads.filter(l=>l.temp==='fechando').length;
-  const ag=leads.filter(l=>deveLigar(l)&&!jaHoje(l));
-  document.getElementById('m-today').textContent=ag.length;
-  const ba=document.getElementById('banner');
-  ba.innerHTML=ag.length?`<div style="background:rgba(212,168,67,0.08);border:1px solid rgba(212,168,67,0.2);border-radius:9px;padding:9px 13px;display:flex;align-items:center;gap:9px"><i class="ti ti-bell-ringing" style="color:var(--gold);font-size:17px"></i><div style="flex:1;font-size:12px;color:var(--text2)"><strong style="color:var(--text)">${ag.length} lead(s) para contatar hoje.</strong> Ative os alertas para ser avisado no horário certo.</div><button class="btn-sm" onclick="ativarNotif()" style="font-size:11px"><i class="ti ti-bell"></i> Ativar</button></div>`:'';
-  const prio=[...leads].filter(l=>['quente','fechando','morno'].includes(l.temp)).sort((a,b)=>['fechando','quente','morno'].indexOf(a.temp)-['fechando','quente','morno'].indexOf(b.temp)).slice(0,5);
-  document.getElementById('dash-leads').innerHTML=prio.length?prio.map(lCard).join(''):'<div class="empty-state"><i class="ti ti-user-search"></i>Nenhum lead ainda</div>';
-  document.getElementById('dash-ag').innerHTML=ag.length?ag.slice(0,5).map(agItem).join(''):'<div class="empty-state"><i class="ti ti-checks"></i>Tudo em dia!</div>';
-  renderAlertas();
-  renderMeta();
+  document.getElementById('m-vend').textContent=leads.filter(l=>l.temp==='vendido').length;
+  renderMissao();
   renderProtoTable();
   renderRegDia();
 }
 
+function renderMissao(){
+  const ativos=ordenar(leads.filter(leadAtivo));
+  const pend1=ativos.filter(l=>!fezContato(l,false));
+  const feitos1=ativos.filter(l=>fezContato(l,false));
+  const pend2=feitos1.filter(l=>!fezContato(l,true));
+  const feitos2=feitos1.filter(l=>fezContato(l,true));
+
+  // progresso
+  const total=ativos.length;
+  const tf=feitos1.length+feitos2.length;
+  const tt=total*2;
+  const pct=tt>0?Math.min(100,Math.round((tf/tt)*100)):0;
+  document.getElementById('dia-prog').textContent=`${tf}/${tt} tarefas`;
+  const bar=document.getElementById('dia-bar');
+  bar.style.width=pct+'%';bar.className='prog-b'+(pct>=100?' full':'');
+  const pe=document.getElementById('dia-pct');
+  pe.textContent=pct>=100?'Missao cumprida hoje!':pct>=50?`${pct}% - Boa, continue!`:total===0?'Nenhum lead ativo':'Vamos la!';
+  pe.style.color=pct>=100?'#4ade80':pct>=50?'var(--gold2)':'var(--text3)';
+
+  const at=leads.filter(l=>(l.hist||[]).some(h=>h.iso===hj()&&h.tipo==='atendeu')).length;
+  const na=leads.filter(l=>(l.hist||[]).some(h=>h.iso===hj()&&h.tipo==='nao_atendeu')).length;
+  document.getElementById('dia-resumo').innerHTML=
+    `<span style="font-size:10px;display:flex;align-items:center;gap:3px;background:var(--bg3);padding:2px 7px;border-radius:5px"><i class="ti ti-check" style="color:#4ade80;font-size:12px"></i>${at} atenderam</span>
+     <span style="font-size:10px;display:flex;align-items:center;gap:3px;background:var(--bg3);padding:2px 7px;border-radius:5px"><i class="ti ti-phone-off" style="color:#f87171;font-size:12px"></i>${na} nao atenderam</span>
+     <span style="font-size:10px;display:flex;align-items:center;gap:3px;background:var(--bg3);padding:2px 7px;border-radius:5px"><i class="ti ti-hourglass" style="color:var(--gold);font-size:12px"></i>${pend1.length} pendentes</span>`;
+
+  // 1o turno
+  const el=document.getElementById('missao-conteudo');
+  let h='';
+  if(pend1.length){
+    h+=`<div class="sec-label" style="color:var(--gold);padding-top:0"><i class="ti ti-sun" style="font-size:13px"></i>1o Contato - Pendentes (${pend1.length})</div>`;
+    // paginacao simples para performance
+    const slice=pend1.slice(0,POR_PAG);
+    h+=slice.map((l,i)=>mlCard(l,i+1,false)).join('');
+    if(pend1.length>POR_PAG) h+=`<button class="btn-sm" style="width:100%;justify-content:center;margin-top:4px" onclick="mostrarMaisMissao()"><i class="ti ti-plus"></i> Ver mais ${pend1.length-POR_PAG} leads</button>`;
+  }
+  if(feitos1.length){
+    h+=`<div class="sec-label" style="color:var(--text3);margin-top:${pend1.length?'8px':'0'}"><i class="ti ti-circle-check" style="font-size:13px;color:#4ade80"></i>1o Contato - Feitos (${feitos1.length})</div>`;
+    h+=feitos1.map((l,i)=>mlCard(l,pend1.length+i+1,false,true)).join('');
+  }
+  el.innerHTML=h||'<div style="color:var(--text3);font-size:13px;padding:8px 0">Nenhum lead ativo no momento.</div>';
+
+  // 2o turno
+  const tw=document.getElementById('turno2-wrap');
+  const tl=document.getElementById('missao-turno2');
+  if(feitos1.length){
+    tw.style.display='';
+    let h2='';
+    if(pend2.length) h2+=pend2.map(l=>mlCard(l,0,true)).join('');
+    if(feitos2.length){
+      h2+=`<div style="font-size:10px;color:var(--text3);font-weight:600;margin:8px 0 5px">Feitos</div>`;
+      h2+=feitos2.map(l=>mlCard(l,0,true,true)).join('');
+    }
+    tl.innerHTML=h2;
+  } else tw.style.display='none';
+
+  // registro resumido
+  renderRegDiaMini();
+}
+
+function mostrarMaisMissao(){
+  _missaoPag++;
+  const ativos=ordenar(leads.filter(leadAtivo));
+  const pend1=ativos.filter(l=>!fezContato(l,false));
+  const el=document.getElementById('missao-conteudo');
+  // refaz com mais itens
+  const ate=POR_PAG*(_missaoPag+1);
+  const slice=pend1.slice(0,ate);
+  let h=`<div class="sec-label" style="color:var(--gold);padding-top:0"><i class="ti ti-sun" style="font-size:13px"></i>1o Contato - Pendentes (${pend1.length})</div>`;
+  h+=slice.map((l,i)=>mlCard(l,i+1,false)).join('');
+  if(pend1.length>ate) h+=`<button class="btn-sm" style="width:100%;justify-content:center;margin-top:4px" onclick="mostrarMaisMissao()"><i class="ti ti-plus"></i> Ver mais ${pend1.length-ate} leads</button>`;
+  const feitos1=ativos.filter(l=>fezContato(l,false));
+  if(feitos1.length){
+    h+=`<div class="sec-label" style="color:var(--text3);margin-top:8px"><i class="ti ti-circle-check" style="font-size:13px;color:#4ade80"></i>1o Contato - Feitos (${feitos1.length})</div>`;
+    h+=feitos1.map((l,i)=>mlCard(l,pend1.length+i+1,false,true)).join('');
+  }
+  document.getElementById('missao-conteudo').innerHTML=h;
+}
+
+function mlCard(l,num,segundo,feito=false){
+  const fn=l.fone.replace(/\D/g,'');
+  const sug=sugerir(l);
+  const cor={fechando:'#4ade80',quente:'#f87171',morno:'#fbbf24',gelado:'#7db9ff',vendido:'var(--gold2)'}[l.temp]||'var(--text3)';
+  const tlMap={gelado:'Gelado',morno:'Morno',quente:'Quente',fechando:'Fechando',vendido:'Vendido'}
+  const tl=tlMap[l.temp]||l.temp;
+  const ok=feito||(segundo?fezContato(l,true):fezContato(l,false));
+  const cid=`ml-${l.id}-${segundo?2:1}`;
+  const waUrl=`https://wa.me/55${fn}?text=${encodeURIComponent(sug.msg)}`;
+  const docsInfo=l.temp==='fechando'?`<span style="font-size:10px;color:#4ade80;margin-left:4px">${Object.values(l.docs||{}).filter(Boolean).length}/${getDocList(l.perfil).length} docs</span>`:'';
+
+  return`<div class="ml ${ok?'feito-2':''}" id="${cid}">
+    <div class="ml-top" onclick="toggleML('${cid}')">
+      ${num>0?`<span class="ml-pri" style="color:${cor};background:${cor}1a">${num}</span>`:''}
+      <div class="ml-info">
+        <div class="ml-nome${ok?' riscado':''}">${l.nome}${docsInfo}</div>
+        <div class="ml-sub">${tl} · Etapa ${l.etapa||1}/7${segundo?' · 2o contato':''}${l.reativarEm?' · Reativado':''}</div>
+      </div>
+      <div class="ml-acts" onclick="event.stopPropagation()">
+        ${!ok?`<a href="${waUrl}" class="wa-btn" style="font-size:11px" target="_blank" onclick="regRapido('${l.id}',${segundo})"><i class="ti ti-brand-whatsapp"></i></a>`:''}
+        <button class="btn-icon" onclick="openPanel('${l.id}')" style="color:var(--gold);font-size:13px"><i class="ti ti-chevron-right"></i></button>
+      </div>
+    </div>
+    <div class="ml-body" id="body-${cid}">
+      <div class="sug-box">
+        <div class="sug-tipo" style="color:${sug.cor}"><i class="ti ${sug.ico}" style="font-size:12px"></i> ${sug.tipo}</div>
+        <div class="sug-msg">${sug.msg}</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button class="btn-sm" style="font-size:11px" onclick="copiar(this,'${encodeURIComponent(sug.msg)}')"><i class="ti ti-copy"></i> Copiar</button>
+          <a href="${waUrl}" class="wa-btn" style="font-size:11px" target="_blank" onclick="regRapido('${l.id}',${segundo})"><i class="ti ti-brand-whatsapp"></i> Enviar</a>
+          ${!ok?`<button class="btn-green" style="font-size:11px;padding:5px 10px" onclick="marcarFeito('${l.id}',${segundo})"><i class="ti ti-check"></i> Feito</button>`
+               :`<span style="font-size:11px;color:#4ade80;display:flex;align-items:center;gap:4px"><i class="ti ti-circle-check"></i> Contato registrado</span>`}
+        </div>
+      </div>
+      <div style="margin-top:6px">
+        <button class="btn-sm" style="font-size:11px" onclick="openPanel('${l.id}')"><i class="ti ti-user"></i> Abrir ficha completa</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function toggleML(id){const b=document.getElementById('body-'+id);if(b)b.classList.toggle('open')}
+
+function marcarFeito(id,segundo){
+  const l=leads.find(x=>x.id===id);if(!l)return;
+  const n=now();if(!l.hist)l.hist=[];
+  l.hist.push({iso:n.iso,ts:n.ts,tipo:'atendeu',nota:`Marcado via Missao do Dia${segundo?' - 2o contato':''}`,segundo:!!segundo});
+  l.updatedAt=n.ts;save();renderDash();
+  toast('Feito!',`${l.nome} - contato registrado.`,3000);
+}
+
+function regRapido(id,segundo){
+  const l=leads.find(x=>x.id===id);if(!l)return;
+  const n=now();if(!l.hist)l.hist=[];
+  l.hist.push({iso:n.iso,ts:n.ts,tipo:'wa',nota:`WhatsApp aberto - ${segundo?'2o':'1o'} contato via Missao do Dia`,segundo:!!segundo});
+  l.updatedAt=n.ts;save();
+  if(segundo){
+    setTimeout(()=>abrirModal2([l],0),700);
+  } else {
+    setTimeout(()=>renderDash(),200);
+    toast('WhatsApp aberto',`${l.nome} - registrado.`,3000);
+  }
+}
+
+function copiar(btn,enc){
+  const txt=decodeURIComponent(enc);
+  const done=()=>{const i=btn.querySelector('i');if(i){i.className='ti ti-check';i.style.color='#4ade80';setTimeout(()=>{i.className='ti ti-copy';i.style.color=''},2000)}};
+  if(navigator.clipboard)navigator.clipboard.writeText(txt).then(done).catch(()=>{fb(txt);done()});
+  else{fb(txt);done()}
+}
+function fb(t){const x=document.createElement('textarea');x.value=t;x.style.cssText='position:fixed;opacity:0';document.body.appendChild(x);x.focus();x.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(x)}
+
+// 2o TURNO MODAL
+function abrirModal2(lista,idx){
+  if(idx>=lista.length){closeMo('modal-segundo');renderDash();return}
+  const l=lista[idx];
+  const fn=l.fone.replace(/\D/g,'');
+  const sug=sugerir(l);
+  const waUrl=`https://wa.me/55${fn}?text=${encodeURIComponent(sug.msg)}`;
+  document.getElementById('modal-segundo-txt').innerHTML=
+    `<strong>${l.nome}</strong> - Etapa ${l.etapa||1}/7<br><br>O <strong>1o contato de hoje deu certo?</strong>`;
+  document.getElementById('modal-segundo-btns').innerHTML=`
+    <button class="btn-green" style="font-size:12px" onclick="resp2('${l.id}','ok',${idx})"><i class="ti ti-check"></i> Sim, deu certo</button>
+    <a href="${waUrl}" class="wa-btn" style="font-size:12px" target="_blank" onclick="resp2('${l.id}','wa',${idx})"><i class="ti ti-brand-whatsapp"></i> Nao - abrir WhatsApp</a>
+    <button class="btn-sm" style="font-size:12px" onclick="resp2('${l.id}','pular',${idx})">Pular</button>`;
+  document.getElementById('modal-segundo').classList.add('open');
+}
+function resp2(id,acao,idx){
+  const l=leads.find(x=>x.id===id);
+  if(l&&acao!=='pular'){
+    const n=now();if(!l.hist)l.hist=[];
+    l.hist.push({iso:n.iso,ts:n.ts,tipo:acao==='ok'?'atendeu':acao==='wa'?'wa':'nao_atendeu',
+      nota:acao==='ok'?'2o contato - deu certo':acao==='wa'?'2o contato - WhatsApp enviado':'2o contato - nao respondeu',segundo:true});
+    l.updatedAt=n.ts;save();
+  }
+  closeMo('modal-segundo');
+  const prox=idx+1;
+  const lista=_2fila.length?_2fila:[l];
+  if(prox<lista.length) setTimeout(()=>abrirModal2(lista,prox),300);
+  else renderDash();
+}
+
+// VENDIDO
+function marcarVendido(){
+  if(!sel)return;
+  document.getElementById('modal-vendido-txt').innerHTML=
+    `Marcar <strong>${sel.nome}</strong> como vendido?<br><br>Este lead sai da Missao do Dia e vai para a lista de contratos assinados.`;
+  document.getElementById('modal-vendido').classList.add('open');
+}
+function confirmarVendido(){
+  if(!sel)return;
+  const n=now();
+  sel.temp='vendido';
+  if(!sel.hist)sel.hist=[];
+  sel.hist.push({iso:n.iso,ts:n.ts,tipo:'nota',nota:'VENDIDO! Contrato assinado.'});
+  sel.updatedAt=n.ts;
+  touch();closeMo('modal-vendido');
+  toast('Parabens! Venda realizada!',`${sel.nome} - contrato assinado!`,7000);
+  renderDash();renderPanel();
+}
+
+// REATIVAR EM DATA
+function abrirReativar(){
+  if(!sel)return;
+  document.getElementById('modal-reativar-txt').innerHTML=`Lead: <strong>${sel.nome}</strong><br><br>Escolha a data em que este lead deve voltar para a Missao do Dia:`;
+  // definir minimo como amanha
+  const amanha=new Date();amanha.setDate(amanha.getDate()+1);
+  document.getElementById('modal-reativar-dt').min=amanha.toISOString().split('T')[0];
+  document.getElementById('modal-reativar-dt').value=sel.reativarEm||amanha.toISOString().split('T')[0];
+  document.getElementById('modal-reativar').classList.add('open');
+}
+function confirmarReativar(){
+  if(!sel)return;
+  const dt=document.getElementById('modal-reativar-dt').value;
+  if(!dt){toast('Aviso','Informe uma data valida!');return}
+  sel.reativarEm=dt;
+  sel.temp='reativar';
+  touch();
+  closeMo('modal-reativar');
+  toast('Data de reativacao salva!',`${sel.nome} volta para a Missao do Dia em ${dt}.`);
+  renderDash();renderPanel();
+}
+function limparReativar(){
+  if(!sel)return;
+  sel.reativarEm=null;
+  sel.temp='gelado';
+  touch();
+  closeMo('modal-reativar');
+  toast('Reativacao removida.',`${sel.nome} voltou para o status Gelado.`);
+  renderDash();renderPanel();
+}
+
+// NOTIFICACOES
+async function ativarNotif(){
+  if(!('Notification' in window)){toast('Aviso','Seu navegador nao suporta notificacoes.');return}
+  let p=Notification.permission;
+  if(p==='default') p=await Notification.requestPermission();
+  if(p==='granted'){
+    document.getElementById('notif-label').textContent=' ON';
+    document.getElementById('notif-btn').style.color='#4ade80';
+    localStorage.setItem('cdm_notif','1');
+    try{new Notification('Corretor de Milhoes',{body:'Alertas ativados! Voce sera avisado nos horarios dos leads.'})}catch(e){}
+    toast('Alertas ativados!','Notificacoes ativas nos horarios dos clientes.');
+    iniciarNotif();
+  } else toast('Permissao negada','Ative nas configuracoes do navegador.');
+}
+function enviarNotif(t,b){
+  toast(t,b,8000);
+  if(Notification.permission==='granted')try{new Notification(t,{body:b})}catch(e){}
+}
+function iniciarNotif(){
+  if(notifInt)clearInterval(notifInt);
+  notifInt=setInterval(()=>{
+    const h=new Date().getHours(),m=new Date().getMinutes();
+    // notificar as 9h sobre missao do dia
+    if(h===9&&m===0){
+      const pend=leads.filter(leadAtivo).filter(l=>!fezContato(l,false));
+      if(pend.length) enviarNotif(`Missao do Dia: ${pend.length} contatos pendentes!`,`Comece pelo mais prioritario na lista.`);
+    }
+    // notificar as 18h sobre 2o contato
+    if(h===18&&m===0){
+      const pend2=leads.filter(leadAtivo).filter(l=>fezContato(l,false)&&!fezContato(l,true));
+      if(pend2.length) enviarNotif(`2o Contato: ${pend2.length} clientes aguardam!`,`Hora do follow-up noturno.`);
+    }
+  },60000);
+}
+
+// Verificar reativacoes ao abrir
+function verificarReativacoes(){
+  let reativados=0;
+  leads.forEach(l=>{
+    if(l.temp==='reativar'&&l.reativarEm&&l.reativarEm<=hj()){
+      l.temp='gelado';l.reativarEm=null;reativados++;
+    }
+  });
+  if(reativados){save();toast(`${reativados} lead(s) reativado(s)!`,`Voltaram para a Missao do Dia.`);}
+}
+
+// RENDER REG DIA MINI
+function renderRegDiaMini(){
+  const el=document.getElementById('reg-dia-mini');if(!el)return;
+  const iso=hj(),evs=[];
+  leads.forEach(l=>(l.hist||[]).filter(h=>h.iso===iso&&h.tipo!=='nota').forEach(h=>evs.push({...h,ln:l.nome,lid:l.id})));
+  if(!evs.length){el.innerHTML='';return}
+  evs.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+  const cc={atendeu:'#4ade80',nao_atendeu:'#f87171',wa:'#25d366'};
+  const cl={atendeu:'Atendeu',nao_atendeu:'Nao atendeu',wa:'WhatsApp'};
+  el.innerHTML=`<div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--text3);margin-bottom:6px"><i class="ti ti-history" style="font-size:12px;margin-right:4px"></i>Ultimas acoes de hoje</div>`+
+    evs.slice(0,5).map(e=>`
+    <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;background:var(--bg3);border-radius:7px;margin-bottom:4px;cursor:pointer" onclick="openPanel('${e.lid}')">
+      <span style="width:7px;height:7px;border-radius:50%;background:${cc[e.tipo]||'#888'};flex-shrink:0"></span>
+      <span style="font-size:12px;flex:1"><strong>${e.ln}</strong> — ${cl[e.tipo]||e.tipo}${e.segundo?' (2o)':''}</span>
+      <span style="font-size:10px;color:var(--text3)">${fmtTs(e.ts)}</span>
+    </div>`).join('');
+}
+
+// LEADS LIST
 function lCard(l){
-  const tl={gelado:'Gelado',morno:'Morno',quente:'Quente',fechando:'Fechando',perdido:'Perdido'}[l.temp]||l.temp;
+  const tlMap={gelado:'Gelado',morno:'Morno',quente:'Quente',fechando:'Fechando',perdido:'Perdido',vendido:'Vendido',reativar:'Reativar'}
+  const tl=tlMap[l.temp]||l.temp;
   const nc=(l.hist||[]).filter(h=>h.tipo!=='nota').length;
   const simOk=l.sim&&l.sim.renda&&l.sim.nasc&&l.sim.cart&&l.sim.dep;
-  const ult=l.updatedAt?`<span style="font-size:10px;color:var(--text3)">${fmtTs(l.updatedAt)}</span>`:'';
   return`<div class="lead-item" onclick="openPanel('${l.id}')">
-    <div class="lead-top"><span class="lead-name">${l.nome}</span><span class="tb t-${l.temp}">${tl}</span></div>
+    <div class="lead-top"><span class="lead-name">${l.nome}</span><span class="tb t-${l.temp==='vendido'?'vendido':l.temp==='reativar'?'reativar':l.temp}">${tl}</span></div>
     <div style="font-size:11px;color:var(--text2);margin-top:2px"><i class="ti ti-phone" style="font-size:10px"></i> ${l.fone}</div>
     <div class="lead-meta">
       <span class="tag tb2">Etapa ${l.etapa||1}/7</span>
-      ${simOk?'<span class="tag tgr"><i class="ti ti-check" style="font-size:10px"></i> Simulação OK</span>':'<span class="tag tr">Simulação pendente</span>'}
+      ${simOk?'<span class="tag tgr"><i class="ti ti-check" style="font-size:10px"></i> Simulacao OK</span>':'<span class="tag tr">Simulacao pendente</span>'}
       <span class="tag" style="background:var(--bg4);color:var(--text3)">${nc} contato(s)</span>
-      ${ult}
+      ${l.reativarEm?`<span class="tag" style="background:rgba(167,139,250,0.13);color:#c4b5fd">Reativar: ${l.reativarEm}</span>`:''}
+      ${l.updatedAt?`<span style="font-size:10px;color:var(--text3)">${fmtTs(l.updatedAt)}</span>`:''}
     </div>
   </div>`;
+}
+
+function filt(f){
+  cf=f;
+  ['todos','gelado','morno','quente','fechando','vendido','reativar'].forEach(x=>{
+    const b=document.getElementById('f-'+x);if(b)b.style.background=x===f?'rgba(212,168,67,0.26)':'';
+  });
+  renderLeads(f);
+}
+function renderLeads(f){
+  let list=f==='todos'?leads:leads.filter(l=>l.temp===f);
+  list=ordenar(list);
+  document.getElementById('leads-list').innerHTML=list.length?list.map(lCard).join(''):'<div class="empty-state"><i class="ti ti-user-off"></i>Nenhum lead encontrado</div>';
 }
 
 function agItem(l){
   const fn=l.fone.replace(/\D/g,'');
   return`<div class="ag-item">
-    <div class="ag-time">${getHL0(l.hor)}</div>
+    <div class="ag-time">${{manha:'9h',almoco:'12h',tarde:'14h',noite:'18h'}[l.hor]||''}</div>
     <div class="ag-info"><div class="ag-name">${l.nome}</div><div class="ag-desc">Etapa ${l.etapa||1}/7</div></div>
     <div class="ag-actions">
       <button class="wa-btn" onclick="event.stopPropagation();abrirWADireto('${l.id}')"><i class="ti ti-brand-whatsapp"></i></button>
@@ -727,28 +977,50 @@ function agItem(l){
   </div>`;
 }
 
-function filt(f){
-  cf=f;
-  ['todos','gelado','morno','quente','fechando'].forEach(x=>{const b=document.getElementById('f-'+x);if(b)b.style.background=x===f?'rgba(212,168,67,0.26)':''});
-  renderLeads(f);
-}
-function renderLeads(f){
-  const list=f==='todos'?leads:leads.filter(l=>l.temp===f);
-  document.getElementById('leads-list').innerHTML=list.length?list.map(lCard).join(''):'<div class="empty-state"><i class="ti ti-user-off"></i>Nenhum lead encontrado</div>';
-}
-
 function renderAgenda(){
   const el=document.getElementById('agenda-list');
-  const pend=leads.filter(l=>deveLigar(l)&&!jaHoje(l));
-  const feitos=leads.filter(l=>jaHoje(l));
+  const ativos=leads.filter(leadAtivo);
+  const pend=ativos.filter(l=>!fezContato(l,false));
+  const feitos=ativos.filter(l=>fezContato(l,false));
   let h='';
-  if(pend.length)h+=`<div style="font-size:10px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px">Pendentes hoje (${pend.length})</div>`+pend.map(agItem).join('');
-  if(feitos.length)h+=`<div style="font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin:13px 0 7px">Contactados hoje (${feitos.length})</div>`+feitos.map(l=>`<div class="ag-item feito"><div class="ag-info"><div class="ag-name">${l.nome}</div></div><i class="ti ti-circle-check" style="color:var(--green);font-size:17px"></i></div>`).join('');
-  if(!pend.length&&!feitos.length)h='<div class="empty-state"><i class="ti ti-calendar-off"></i>Nenhum protocolo ativo hoje</div>';
+  if(pend.length) h+=`<div style="font-size:10px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px">Pendentes hoje (${pend.length})</div>`+pend.map(agItem).join('');
+  if(feitos.length) h+=`<div style="font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin:13px 0 7px">Contactados hoje (${feitos.length})</div>`+feitos.map(l=>`<div class="ag-item feito"><div class="ag-info"><div class="ag-name">${l.nome}</div></div><i class="ti ti-circle-check" style="color:var(--green);font-size:17px"></i></div>`).join('');
+  if(!pend.length&&!feitos.length) h='<div class="empty-state"><i class="ti ti-calendar-off"></i>Nenhum lead ativo hoje</div>';
   el.innerHTML=h;
 }
 
 let spinOpen=null;
+const SPIN=[
+  {num:1,titulo:'Abordagem + 4 Perguntas',badge:'Etapa 1',cor:'#4a9eff',bgc:'rgba(74,158,255,0.12)',
+   intro:'Objetivo: criar conexao e ja coletar as 4 perguntas essenciais para a simulacao.',
+   qs:['Oi [nome], tudo bem? Aqui e o Jairo, corretor de imoveis. Vi que voce demonstrou interesse em imovel proprio - posso tirar suas duvidas agora?','Para ja te mostrar as condicoes reais e ver se voce se encaixa no programa, preciso de 4 informacoes rapidas. Pode me ajudar?','1 - Qual e a renda bruta total da sua familia por mes? (Pode ser aproximado)','2 - Qual a sua data de nascimento?','3 - Voce tem mais de 3 anos de carteira assinada, somando todos os empregos?','4 - Voce tem filhos ou dependentes?','Otimo! Com essas informacoes ja consigo montar uma simulacao personalizada pra voce. Posso te mostrar agora?'],
+   dica:'Colete as 4 perguntas no 1o contato sempre. Elas definem a faixa MCMV e o subsidio possivel.'},
+  {num:2,titulo:'Situacao (S)',badge:'SPIN - S',cor:'#f59e0b',bgc:'rgba(245,158,11,0.14)',
+   intro:'Objetivo: entender o cenario atual do cliente. Ouca mais do que fale.',
+   qs:['Voce esta morando em casa alugada, propria ou com a familia hoje?','Quanto voce paga de aluguel por mes?','Ha quanto tempo voce esta nessa situacao?','Tem mais alguem na familia que trabalha? Qual a renda total da casa?','E voce sozinho no financiamento ou vai entrar com alguem junto?'],
+   dica:'Anote tudo no historico. Essas respostas alimentam a Implicacao.'},
+  {num:3,titulo:'Problema (P)',badge:'SPIN - P',cor:'#ef4444',bgc:'rgba(239,68,68,0.14)',
+   intro:'Objetivo: fazer o cliente verbalizar as insatisfacoes com a situacao atual.',
+   qs:['O que te incomoda mais em morar de aluguel hoje?','Voce ja passou pela situacao do dono pedir o imovel de volta ou subir o aluguel de repente?','Voce sente que o dinheiro do aluguel e jogado fora todo mes?','O espaco onde voce mora hoje atende bem a sua familia?','O que falta no lugar onde voce mora que voce gostaria de ter no imovel proprio?'],
+   dica:'Nao interrompa. Escuta ativa e tudo aqui.'},
+  {num:4,titulo:'Implicacao (I)',badge:'SPIN - I',cor:'#dc2626',bgc:'rgba(220,38,38,0.14)',
+   intro:'Objetivo: mostrar o CUSTO REAL de continuar como esta.',
+   qs:['Se voce somar tudo que ja pagou de aluguel nesses anos... quanto daria? Esse valor poderia ter sido a entrada do seu imovel proprio.','Daqui a 5 anos, se voce ainda estiver no aluguel, como voce vai se sentir com relacao a isso?','E se o proprietario resolver vender o imovel agora - voce teria para onde ir sem stress?','Com os filhos crescendo, o espaco vai continuar sendo suficiente?','No aluguel voce nao esta construindo patrimonio nenhum. Isso te preocupa pensando no futuro da sua familia?'],
+   dica:'O desconforto aqui e o gatilho para a decisao.'},
+  {num:5,titulo:'Necessidade (N)',badge:'SPIN - N',cor:'#a78bfa',bgc:'rgba(167,139,250,0.14)',
+   intro:'Objetivo: fazer o cliente descrever a solucao com as proprias palavras.',
+   qs:['Como seria a sua vida tendo o imovel proprio, pagando uma parcela igual ou menor ao que voce paga de aluguel hoje?','O que mudaria pra sua familia se voces tivessem um lugar definitivo e seguro pra morar?','Se eu te mostrar que e possivel sair do aluguel com subsidio do governo, voce toparia ver as condicoes?','O que e mais importante pra voce: localizacao, tamanho ou a parcela caber no bolso?','Se a parcela ficasse igual ou menor ao aluguel atual, faria sentido comprar agora?'],
+   dica:'Deixe o cliente se convencer. Anote tudo.'},
+  {num:6,titulo:'Entrega da Simulacao',badge:'Simulacao',cor:'#10b981',bgc:'rgba(16,185,129,0.14)',
+   intro:'Objetivo: apresentar os numeros reais e preparar o cliente para a aprovacao na Caixa.',
+   qs:['Com base na sua renda de [valor], voce se enquadra no Minha Casa Minha Vida - o governo subsidia parte do valor e as condicoes sao bem melhores que o mercado.','Olhando os numeros: sua parcela ficaria em torno de [valor] por mes - isso e menor do que seu aluguel atual, sabia?','O imovel na planta e o melhor momento para comprar: voce paga o preco de hoje e recebe valorizado na entrega.','[nome], gostou da simulacao? O proximo passo e submeter sua analise de credito na Caixa - e gratuito e sem compromisso.','Para eu dar entrada na sua aprovacao, preciso de alguns documentos. Vou te pedindo um de cada vez pelo WhatsApp, combinado?'],
+   dica:'Apos a simulacao, direcione imediatamente para os documentos. Sem documentos nao ha aprovacao.'},
+  {num:7,titulo:'Documentacao para Aprovacao',badge:'Docs',cor:'#4ade80',bgc:'rgba(74,222,128,0.14)',
+   intro:'Objetivo: solicitar os documentos um a um para submeter a analise de credito na Caixa.',
+   qs:['[nome], vou te mandar agora o primeiro documento que preciso. Assim que voce me enviar, ja peco o proximo - e um de cada vez pra facilitar pra voce.','Assim que eu tiver tudo, dou entrada na sua analise de credito na Caixa Economica dentro do Minha Casa Minha Vida.','Qualquer duvida sobre qualquer documento, me chama aqui - sou eu que acompanho tudo ate a aprovacao.','[nome], recebi seu documento! Obrigado. Ja vou te passar o proximo.'],
+   dica:'Nunca mande a lista inteira - o cliente se assusta. Um documento por vez, no ritmo dele.'}
+];
+
 function renderSpin(){
   document.getElementById('spin-steps').innerHTML=SPIN.map(s=>`
     <div class="ss ${spinOpen===s.num?'open-s':''}" id="ss${s.num}">
@@ -769,10 +1041,9 @@ function toggleSpin(n){spinOpen=spinOpen===n?null:n;renderSpin();setTimeout(()=>
 function copyQ(el){
   const txt=el.querySelector('span').textContent;
   const done=()=>{const i=el.querySelector('.cpy i');i.className='ti ti-check';i.style.color='#4ade80';setTimeout(()=>{i.className='ti ti-copy';i.style.color=''},2000)};
-  if(navigator.clipboard){navigator.clipboard.writeText(txt).then(done).catch(()=>{fallbackCopy(txt);done()})}
-  else{fallbackCopy(txt);done()}
+  if(navigator.clipboard)navigator.clipboard.writeText(txt).then(done).catch(()=>{fb(txt);done()});
+  else{fb(txt);done()}
 }
-function fallbackCopy(txt){const t=document.createElement('textarea');t.value=txt;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.focus();t.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(t)}
 
 function salvarLead(){
   const nome=document.getElementById('f-nome').value.trim();
@@ -787,15 +1058,50 @@ function salvarLead(){
   if(l.obs)l.hist.push({iso:n.iso,ts:n.ts,tipo:'nota',nota:l.obs});
   leads.unshift(l);save();
   ['f-nome','f-fone','f-obs'].forEach(id=>document.getElementById(id).value='');
-  toast('Lead cadastrado!',`${nome} adicionado. Primeiro contato: ${getHL(l.hor)}`);
-  showTab('leads');
+  toast('Lead cadastrado!',`${nome} adicionado. Aparece agora na Missao do Dia.`);
+  showTab('dash');
+}
+
+function showTab(t){
+  ['dash','leads','agenda','spin','novo'].forEach(x=>{
+    document.getElementById('view-'+x).style.display=x===t?'':'none';
+    const b=document.getElementById('tab-'+x);if(b)b.classList.toggle('active',x===t);
+  });
+  _missaoPag=0;
+  if(t==='dash')renderDash();
+  if(t==='leads')renderLeads(cf);
+  if(t==='agenda')renderAgenda();
+  if(t==='spin')renderSpin();
+}
+
+function getDocList(p){
+  p=p||{tipo:'clt',civil:'solteiro',filhos:'nao'};
+  const isCLT=p.tipo==='clt';
+  let docs=[
+    {n:'RG ou CNH do titular (frente e verso)',w:'Documento de identidade oficial.'},
+    {n:'Certidao de nascimento do titular',w:'Comprova estado civil e dados pessoais.'},
+    isCLT?{n:'3 ultimos holerites do titular',w:'Comprovam a renda mensal para analise de credito.'}
+         :{n:'Extrato bancario dos ultimos 6 meses',w:'Para autonomos substitui o holerite.'},
+    {n:'Extrato da Carteira de Trabalho Digital (CTPS)',w:'Confirma historico de vinculo empregaticio.'},
+    {n:'Comprovante de endereco atualizado',w:'Comprova onde voce reside hoje.'},
+  ];
+  if(p.filhos==='sim') docs.push({n:'Certidao de nascimento dos filhos/dependentes',w:'Familias com dependentes tem maior subsidio.'});
+  if(p.civil==='casado'){
+    docs.push({n:'Certidao de casamento ou declaracao de uniao estavel',w:'Obrigatoria quando ha conjuge.'});
+    docs.push({n:'RG ou CNH do conjuge (frente e verso)',w:'O conjuge entra como co-titular.'});
+    docs.push({n:'Certidao de nascimento do conjuge',w:'Comprova estado civil do co-titular.'});
+    docs.push(isCLT?{n:'3 ultimos holerites do conjuge',w:'A renda do conjuge e somada.'}
+                   :{n:'Extrato bancario dos ultimos 6 meses do conjuge',w:'Co-titular autonomo comprova renda pelo extrato.'});
+    docs.push({n:'Extrato da CTPS digital do conjuge',w:'Confirma historico de trabalho do co-titular.'});
+  }
+  return docs;
 }
 
 function openPanel(id){
   sel=leads.find(l=>l.id===id);if(!sel)return;
   document.getElementById('p-nome').textContent=sel.nome;
   document.getElementById('p-fone').textContent=sel.fone;
-  const origens={crmfaj:'CRMFAJ',instagram:'Instagram',indicacao:'Indicação',whatsapp:'WhatsApp',outro:'Outro'};
+  const origens={crmfaj:'CRMFAJ',instagram:'Instagram',indicacao:'Indicacao',whatsapp:'WhatsApp',outro:'Outro'};
   document.getElementById('p-tags').innerHTML=`<span class="tag tb2">${origens[sel.orig]||sel.orig||''}</span><span class="tag tg">${getHL(sel.hor)}</span>`;
   renderPanel();
   document.getElementById('panel-overlay').classList.add('open');
@@ -804,11 +1110,13 @@ function openPanel(id){
 function renderPanel(){
   if(!sel)return;
   const et=parseInt(sel.etapa)||1;
-  document.getElementById('p-etapa-lbl').textContent=ETAPAS_LABELS[et-1]||'';
+  document.getElementById('p-etapa-lbl').textContent=EL[et-1]||'';
   document.getElementById('p-ebar').innerHTML=Array.from({length:7},(_,i)=>`<div class="eseg ${i<et-1?'done':i===et-1?'cur':''}"></div>`).join('');
   document.getElementById('p-etapa-sel').value=et;
-  const temps=[{k:'gelado',l:'🔵 Gelado'},{k:'morno',l:'🟡 Morno'},{k:'quente',l:'🔴 Quente'},{k:'fechando',l:'🟢 Fechando'},{k:'perdido',l:'⚫ Perdido'}];
-  document.getElementById('p-pills').innerHTML=temps.map(t=>`<button class="sp-pill t-${t.k} ${sel.temp===t.k?'on':''}" onclick="setTemp('${t.k}')">${t.l}</button>`).join('');
+  const temps=[{k:'gelado',l:'Gelado'},{k:'morno',l:'Morno'},{k:'quente',l:'Quente'},{k:'fechando',l:'Fechando'},{k:'vendido',l:'Vendido'},{k:'perdido',l:'Perdido'},{k:'reativar',l:'Reativar'}];
+  document.getElementById('p-pills').innerHTML=temps.map(t=>`<button class="sp-pill t-${['vendido','reativar'].includes(t.k)?t.k:t.k} ${sel.temp===t.k?'on':''}" style="background:var(--bg3);color:var(--text2)" onclick="setTemp('${t.k}')">${t.l}</button>`).join('');
+  document.getElementById('p-reativar-wrap').style.display=sel.temp==='reativar'?'':'none';
+  if(sel.temp==='reativar') document.getElementById('p-reativar-dt').value=sel.reativarEm||'';
   renderSimCards();
   document.getElementById('p-docs-wrap').style.display=et>=6?'':'none';
   if(et>=6)renderDocs();
@@ -819,9 +1127,9 @@ function renderPanel(){
 function renderSimCards(){
   if(!sel)return;
   const s=sel.sim||{};
-  const cmap={'sim':'Sim','nao':'Não','':'—'};
-  const dmap={'nao':'Não tem','sim_1':'1 filho','sim_2':'2 filhos','sim_3p':'3 ou mais','':'—'};
-  const cards=[{n:1,l:'Renda familiar',v:s.renda||null,e:'renda'},{n:2,l:'Nascimento',v:s.nasc||null,e:'data nasc.'},{n:3,l:'Carteira 3+ anos',v:s.cart?cmap[s.cart]:null,e:'carteira'},{n:4,l:'Dependentes',v:s.dep?dmap[s.dep]:null,e:'dependentes'}];
+  const cmap={'sim':'Sim','nao':'Nao','':'—'};
+  const dmap={'nao':'Nao tem','sim_1':'1 filho','sim_2':'2 filhos','sim_3p':'3 ou mais','':'—'};
+  const cards=[{n:1,l:'Renda familiar',v:s.renda||null},{n:2,l:'Nascimento',v:s.nasc||null},{n:3,l:'Carteira 3+ anos',v:s.cart?cmap[s.cart]:null},{n:4,l:'Dependentes',v:s.dep?dmap[s.dep]:null}];
   document.getElementById('p-sim').innerHTML=cards.map(c=>`
     <div class="sim-card ${!c.v?'miss':''}" onclick="abrirSim()">
       <div class="sim-n">${c.n}</div>
@@ -831,9 +1139,7 @@ function renderSimCards(){
 
 function renderDocs(){
   if(!sel)return;
-  const docs=getDocList(sel.perfil);
-  const sent=sel.docs||{};
-  const fn=sel.fone.replace(/\D/g,'');
+  const docs=getDocList(sel.perfil);const sent=sel.docs||{};const fn=sel.fone.replace(/\D/g,'');
   const nextI=docs.findIndex((_,i)=>!sent[i]);
   const ok=Object.values(sent).filter(Boolean).length;
   let h=`<div style="font-size:12px;color:var(--text2);margin-bottom:7px;display:flex;align-items:center;gap:5px"><i class="ti ti-files"></i> ${ok}/${docs.length} recebidos ${ok===docs.length?'<span class="tag tgr">Completo!</span>':''}</div>`;
@@ -841,7 +1147,7 @@ function renderDocs(){
     <div class="doc-row ${sent[i]?'sent':''}">
       <div class="doc-chk ${sent[i]?'on':''}" onclick="toggleDoc(${i})">${sent[i]?'<i class="ti ti-check"></i>':''}</div>
       <div class="doc-info"><div class="doc-name ${sent[i]?'done':''}">${d.n}</div><div class="doc-why">${d.w}</div></div>
-      ${!sent[i]&&i===nextI?`<a href="https://wa.me/55${fn}?text=${encodeURIComponent('Olá '+sel.nome+'! 😊 Aqui é o Jairo. Para dar andamento no seu processo, preciso que você me envie: *'+d.n+'*.\n\n'+d.w+'\n\nAssim que receber, já avanço com tudo!')}" class="wa-btn" target="_blank" onclick="marcarDocEnviado(${i})"><i class="ti ti-brand-whatsapp"></i> Enviar</a>`:''}`
+      ${!sent[i]&&i===nextI?`<a href="https://wa.me/55${fn}?text=${encodeURIComponent('Ola '+sel.nome+'! Aqui e o Jairo. Para dar andamento no seu processo, preciso que voce me envie: *'+d.n+'*. '+d.w+' Assim que receber, ja avanco com tudo!')}" class="wa-btn" target="_blank" onclick="marcarDocEnviado(${i})"><i class="ti ti-brand-whatsapp"></i> Enviar</a>`:''}`
   ).join('');
   document.getElementById('p-docs').innerHTML=h;
 }
@@ -856,45 +1162,33 @@ function renderMsgs(){
   const badge=document.getElementById('p-msgs-badge');
   badge.textContent=step.badge;badge.style.background=step.bgc;badge.style.color=step.cor;
   const fn=sel.fone.replace(/\D/g,'');
-  const temInteracao=(sel.hist||[]).some(h=>h.tipo==='atendeu'||h.tipo==='nao_atendeu');
+  const temInt=(sel.hist||[]).some(h=>h.tipo==='atendeu'||h.tipo==='nao_atendeu');
   let h=`<div style="font-size:11px;color:var(--text2);margin-bottom:8px;line-height:1.5;background:var(--bg4);border-radius:6px;padding:7px 10px"><i class="ti ti-bulb" style="color:var(--gold);margin-right:4px"></i>${step.dica}</div>`;
   h+=step.qs.map(q=>{
     const msg=q.replace(/\[nome\]/gi,sel.nome).replace(/\[valor\]/gi,sel.sim&&sel.sim.renda?sel.sim.renda:'[renda]');
-    const enc=btoa(unescape(encodeURIComponent(msg)));
-    const waUrl=`https://wa.me/55${fn}?text=${encodeURIComponent(msg)}`;
+    const enc=encodeURIComponent(msg);
     return`<div class="msg-row" style="border-left:2px solid ${step.cor}40">
       <div class="msg-txt">${msg}</div>
       <div class="msg-actions">
-        <button class="btn-sm" style="font-size:11px" onclick="copiarMsg(this,'${enc}')"><i class="ti ti-copy"></i> Copiar</button>
-        <a href="${waUrl}" class="wa-btn" style="font-size:11px" target="_blank" onclick="registrarWAMsg('${enc}',${temInteracao})"><i class="ti ti-brand-whatsapp"></i> Enviar no WhatsApp</a>
+        <button class="btn-sm" style="font-size:11px" onclick="copiar(this,'${enc}')"><i class="ti ti-copy"></i> Copiar</button>
+        <a href="https://wa.me/55${fn}?text=${enc}" class="wa-btn" style="font-size:11px" target="_blank" onclick="registrarWAMsg('${enc}',${temInt})"><i class="ti ti-brand-whatsapp"></i> Enviar no WhatsApp</a>
       </div>
     </div>`;
   }).join('');
   document.getElementById('p-msgs').innerHTML=h;
 }
 
-function copiarMsg(btn,enc){
-  const txt=decodeURIComponent(escape(atob(enc)));
-  const done=()=>{const i=btn.querySelector('i');i.className='ti ti-check';i.style.color='#4ade80';setTimeout(()=>{i.className='ti ti-copy';i.style.color=''},2000)};
-  if(navigator.clipboard){navigator.clipboard.writeText(txt).then(done).catch(()=>{fallbackCopy(txt);done()})}
-  else{fallbackCopy(txt);done()}
-}
-
-function registrarWAMsg(enc,temInteracao){
+function registrarWAMsg(enc,temInt){
   if(!sel)return;
-  const txt=decodeURIComponent(escape(atob(enc)));
-  const n=now();
-  if(!sel.hist)sel.hist=[];
-  sel.hist.push({iso:n.iso,ts:n.ts,tipo:'wa',nota:`Msg: "${txt.substring(0,50)}${txt.length>50?'…':''}"`});
-  sel.updatedAt=n.ts;
-  save();renderHist();renderDash();
-  if(temInteracao&&parseInt(sel.etapa)<7){
+  const txt=decodeURIComponent(enc);
+  const n=now();if(!sel.hist)sel.hist=[];
+  sel.hist.push({iso:n.iso,ts:n.ts,tipo:'wa',nota:`Msg: "${txt.substring(0,50)}${txt.length>50?'...':''}"`});
+  sel.updatedAt=n.ts;save();renderHist();renderDash();
+  if(temInt&&parseInt(sel.etapa)<7){
     setTimeout(()=>{
-      if(!sel)return;
-      _avancoId=sel.id;
-      const et=parseInt(sel.etapa)||1;
-      const prox=Math.min(et+1,7);
-      document.getElementById('confirm-wa-txt').innerHTML=`Mensagem enviada para <strong>${sel.nome}</strong>.<br><br>Deseja avançar para <strong>Etapa ${prox} — ${ETAPAS_LABELS[prox-1]}</strong>?`;
+      if(!sel)return;_avancoId=sel.id;
+      const et=parseInt(sel.etapa)||1;const prox=Math.min(et+1,7);
+      document.getElementById('confirm-wa-txt').innerHTML=`Mensagem enviada para <strong>${sel.nome}</strong>.<br><br>Deseja avancar para <strong>Etapa ${prox} - ${EL[prox-1]}</strong>?`;
       document.getElementById('confirm-wa').classList.add('open');
     },400);
   }
@@ -904,27 +1198,26 @@ function renderHist(){
   if(!sel)return;
   const hist=(sel.hist||[]).slice().reverse();
   const cc={atendeu:'#4ade80',nao_atendeu:'#f87171',nota:'#fbbf24',wa:'#25d366'};
-  const cl={atendeu:'Atendeu',nao_atendeu:'Não atendeu',nota:'Anotação',wa:'WhatsApp'};
+  const cl={atendeu:'Atendeu',nao_atendeu:'Nao atendeu',nota:'Anotacao',wa:'WhatsApp'};
   document.getElementById('p-hist').innerHTML=hist.length?hist.map(h=>`
     <div class="hist-entry">
       <div class="hdot" style="background:${cc[h.tipo]||'#888'}"></div>
-      <div><div class="ht"><strong style="color:${cc[h.tipo]||'#888'}">${cl[h.tipo]||h.tipo}</strong>${h.nota?' — '+h.nota:''}</div><div class="hd">${fmtTs(h.ts)}</div></div>
+      <div><div class="ht"><strong style="color:${cc[h.tipo]||'#888'}">${cl[h.tipo]||h.tipo}</strong>${h.nota?' - '+h.nota:''}${h.segundo?' <span style="font-size:10px;color:#a78bfa">(2o contato)</span>':''}</div><div class="hd">${fmtTs(h.ts)}</div></div>
     </div>`).join(''):'<div style="color:var(--text3);font-size:13px">Nenhum registro ainda.</div>';
 }
 
-function setTemp(t){if(!sel)return;sel.temp=t;touch();renderPanel();renderDash()}
-function setEtapa(v){if(!sel)return;sel.etapa=v;touch();renderPanel();renderDash();toast('Etapa atualizada',`${sel.nome} → Etapa ${v}: ${ETAPAS_LABELS[v-1]}`)}
+function setTemp(t){if(!sel)return;sel.temp=t;if(t!=='reativar')sel.reativarEm=null;touch();renderPanel();renderDash()}
+function setEtapa(v){if(!sel)return;sel.etapa=v;touch();renderPanel();renderDash();toast('Etapa atualizada',`${sel.nome} - Etapa ${v}: ${EL[v-1]}`)}
 
 function reg(tipo){
   if(!sel)return;
   const nota=document.getElementById('p-note').value.trim();
-  if(!nota&&tipo==='nota'){toast('Aviso','Escreva uma observação antes de registrar.');return}
-  const n=now();
-  if(!sel.hist)sel.hist=[];
+  if(!nota&&tipo==='nota'){toast('Aviso','Escreva uma observacao antes de registrar.');return}
+  const n=now();if(!sel.hist)sel.hist=[];
   sel.hist.push({iso:n.iso,ts:n.ts,tipo,nota});
   document.getElementById('p-note').value='';
   touch();renderHist();renderDash();renderAgenda();
-  toast(tipo==='atendeu'?'Contato registrado!':tipo==='nao_atendeu'?'Não atendeu registrado':'Anotação salva',`${sel.nome} · ${n.label}`);
+  toast(tipo==='atendeu'?'Contato registrado!':tipo==='nao_atendeu'?'Nao atendeu registrado':'Anotacao salva',`${sel.nome} - ${n.label}`);
 }
 
 function touch(){if(!sel)return;sel.updatedAt=now().ts;save()}
@@ -932,87 +1225,64 @@ function touch(){if(!sel)return;sel.updatedAt=now().ts;save()}
 function abrirWA(){if(!sel)return;waTarget=sel.id;promptWA(sel)}
 function abrirWADireto(id){const l=leads.find(x=>x.id===id);if(!l)return;waTarget=id;promptWA(l)}
 function promptWA(l){
-  const et=parseInt(l.etapa)||1;
-  const prox=Math.min(et+1,7);
-  document.getElementById('confirm-wa-txt').innerHTML=`Abrir WhatsApp com <strong>${l.nome}</strong>?<br><br>Etapa atual: <strong>${et} — ${ETAPAS_LABELS[et-1]}</strong><br>Ao confirmar, registra o contato e avança para <strong>Etapa ${prox} — ${ETAPAS_LABELS[prox-1]}</strong>.`;
+  const et=parseInt(l.etapa)||1;const prox=Math.min(et+1,7);
+  document.getElementById('confirm-wa-txt').innerHTML=`Abrir WhatsApp com <strong>${l.nome}</strong>?<br><br>Etapa atual: <strong>${et} - ${EL[et-1]}</strong><br>Ao confirmar, registra o contato e avanca para <strong>Etapa ${prox}</strong>.`;
   document.getElementById('confirm-wa').classList.add('open');
 }
 function confirmarWA(avancar){
-  const id=_avancoId||waTarget;
-  const l=leads.find(x=>x.id===id);
+  const id=_avancoId||waTarget;const l=leads.find(x=>x.id===id);
   if(l){
-    const n=now();
-    if(!l.hist)l.hist=[];
+    const n=now();if(!l.hist)l.hist=[];
     if(waTarget&&!_avancoId){
       l.hist.push({iso:n.iso,ts:n.ts,tipo:'wa',nota:`WhatsApp aberto na Etapa ${l.etapa||1}`});
       window.open(`https://wa.me/55${l.fone.replace(/\D/g,'')}`, '_blank');
     }
-    if(avancar){
-      const et=parseInt(l.etapa)||1;
-      l.etapa=Math.min(et+1,7);
-      toast('Etapa avançada!',`${l.nome} → Etapa ${l.etapa}: ${ETAPAS_LABELS[l.etapa-1]}`);
-    }
-    l.updatedAt=n.ts;
-    save();
+    if(avancar){const et=parseInt(l.etapa)||1;l.etapa=Math.min(et+1,7);toast('Etapa avancada!',`${l.nome} - Etapa ${l.etapa}: ${EL[l.etapa-1]}`)}
+    l.updatedAt=n.ts;save();
     if(sel&&sel.id===l.id){sel=l;renderPanel();}
     renderDash();renderAgenda();
   }
-  closeMo('confirm-wa');
-  _avancoId=null;waTarget=null;
+  closeMo('confirm-wa');_avancoId=null;waTarget=null;
 }
 
 function abrirSim(){
-  if(!sel)return;
-  const s=sel.sim||{};
-  document.getElementById('s-renda').value=s.renda||'';
-  document.getElementById('s-nasc').value=s.nasc||'';
-  document.getElementById('s-cart').value=s.cart||'';
-  document.getElementById('s-dep').value=s.dep||'';
+  if(!sel)return;const s=sel.sim||{};
+  document.getElementById('s-renda').value=s.renda||'';document.getElementById('s-nasc').value=s.nasc||'';
+  document.getElementById('s-cart').value=s.cart||'';document.getElementById('s-dep').value=s.dep||'';
   document.getElementById('modal-sim').classList.add('open');
 }
 function salvarSim(){
   if(!sel)return;
   sel.sim={renda:document.getElementById('s-renda').value,nasc:document.getElementById('s-nasc').value,cart:document.getElementById('s-cart').value,dep:document.getElementById('s-dep').value};
-  touch();closeMo('modal-sim');renderSimCards();renderDash();
-  toast('Simulação salva!',`Dados de ${sel.nome} atualizados.`);
+  touch();closeMo('modal-sim');renderSimCards();renderDash();toast('Simulacao salva!',`Dados de ${sel.nome} atualizados.`);
 }
 function abrirPerfil(){
-  if(!sel)return;
-  const p=sel.perfil||{};
-  document.getElementById('pr-tipo').value=p.tipo||'clt';
-  document.getElementById('pr-civil').value=p.civil||'solteiro';
-  document.getElementById('pr-filhos').value=p.filhos||'nao';
+  if(!sel)return;const p=sel.perfil||{};
+  document.getElementById('pr-tipo').value=p.tipo||'clt';document.getElementById('pr-civil').value=p.civil||'solteiro';document.getElementById('pr-filhos').value=p.filhos||'nao';
   document.getElementById('modal-perfil').classList.add('open');
 }
 function salvarPerfil(){
   if(!sel)return;
   sel.perfil={tipo:document.getElementById('pr-tipo').value,civil:document.getElementById('pr-civil').value,filhos:document.getElementById('pr-filhos').value};
-  sel.docs={};touch();closeMo('modal-perfil');renderDocs();
-  toast('Perfil atualizado!',`Lista de documentos regenerada para ${sel.nome}.`);
+  sel.docs={};touch();closeMo('modal-perfil');renderDocs();toast('Perfil atualizado!',`Lista de documentos regenerada para ${sel.nome}.`);
 }
 function closeMo(id){document.getElementById(id).classList.remove('open')}
 document.querySelectorAll('.mo').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open')}));
-
 function closePanel(){document.getElementById('panel-overlay').classList.remove('open');sel=null}
 function deletarLead(){
   if(!sel||!confirm('Remover este lead definitivamente?'))return;
   leads=leads.filter(l=>l.id!==sel.id);save();closePanel();renderLeads(cf);renderDash();
 }
 
-// PROTOCOLOS POR TEMPERATURA
 const PROTO_TEMP={
-  fechando:{label:'🟢 Fechando',cor:'#4ade80',bgc:'rgba(46,204,113,0.1)',
-    regra:'Contato DIÁRIO — cliente quase convertido, não pode esfriar.',
-    acoes:['Verificar documentos pendentes','Perguntar se tem dúvidas sobre o processo','Reforçar prazo e disponibilidade de unidades','Oferecer ajuda com qualquer burocracia']},
-  quente:{label:'🔴 Quente',cor:'#f87171',bgc:'rgba(239,68,68,0.1)',
-    regra:'Contato a cada 2 dias — interesse confirmado, manter aquecido.',
-    acoes:['Enviar simulação atualizada ou tirar dúvidas','Perguntar se já conversou com a família','Reforçar benefícios do MCMV','Pedir os documentos para iniciar aprovação']},
-  morno:{label:'🟡 Morno',cor:'#fbbf24',bgc:'rgba(245,158,11,0.1)',
-    regra:'Contato 3x por semana — cliente em consideração, precisa de nutrição.',
-    acoes:['Enviar conteúdo relevante (foto do empreendimento, progresso da obra)','Fazer perguntas SPIN para aprofundar dor','Compartilhar depoimento de cliente satisfeito','Reforçar urgência: unidades limitadas']},
-  gelado:{label:'🔵 Gelado',cor:'#7db9ff',bgc:'rgba(74,158,255,0.1)',
-    regra:'Contato 2x por semana — ainda não engajou, ser leve e persistente.',
-    acoes:['Abordagem inicial — coletar as 4 perguntas da simulação','Mensagem curta e descomplicada, sem pressão','Testar horários diferentes de contato','Se não responder em 2 semanas → marcar como perdido e tentar reativação em 30 dias']}
+  fechando:{label:'Fechando',cor:'#4ade80',bgc:'rgba(46,204,113,0.1)',regra:'Contato DIARIO - cliente quase convertido, nao pode esfriar.',
+    acoes:['Verificar documentos pendentes','Perguntar se tem duvidas sobre o processo','Reforcar prazo e disponibilidade de unidades','Oferecer ajuda com qualquer burocracia']},
+  quente:{label:'Quente',cor:'#f87171',bgc:'rgba(239,68,68,0.1)',regra:'Contato diario - interesse confirmado, manter aquecido.',
+    acoes:['Enviar simulacao atualizada ou tirar duvidas','Perguntar se ja conversou com a familia','Reforcar beneficios do MCMV','Pedir os documentos para iniciar aprovacao']},
+  morno:{label:'Morno',cor:'#fbbf24',bgc:'rgba(245,158,11,0.1)',regra:'Contato diario - cliente em consideracao, precisa de nutricao.',
+    acoes:['Enviar conteudo relevante (foto do empreendimento, progresso da obra)','Fazer perguntas SPIN para aprofundar dor','Compartilhar depoimento de cliente satisfeito','Reforcar urgencia: unidades limitadas']},
+  gelado:{label:'Gelado',cor:'#7db9ff',bgc:'rgba(74,158,255,0.1)',regra:'Contato diario - ainda nao engajou, ser leve e persistente.',
+    acoes:['Abordagem inicial - coletar as 4 perguntas da simulacao','Mensagem curta e descomplicada, sem pressao','Testar horarios diferentes de contato','Se nao responder em 2 semanas - programar reativacao']}
 };
 function renderProtoTable(){
   const el=document.getElementById('proto-table');if(!el)return;
@@ -1025,92 +1295,87 @@ function renderProtoTable(){
         <span style="font-size:11px;background:var(--bg2);border-radius:5px;padding:2px 8px;color:var(--text2)">${counts[k]} lead${counts[k]!==1?'s':''}</span>
       </div>
       <div style="font-size:12px;color:var(--text2);margin-bottom:7px;font-style:italic">${p.regra}</div>
-      <div style="display:flex;flex-direction:column;gap:3px">
-        ${p.acoes.map(a=>`<div style="font-size:12px;color:var(--text);display:flex;align-items:flex-start;gap:6px"><i class="ti ti-chevron-right" style="color:${p.cor};font-size:12px;margin-top:2px;flex-shrink:0"></i>${a}</div>`).join('')}
-      </div>
+      ${p.acoes.map(a=>`<div style="font-size:12px;color:var(--text);display:flex;align-items:flex-start;gap:6px;margin-bottom:3px"><i class="ti ti-chevron-right" style="color:${p.cor};font-size:12px;margin-top:2px;flex-shrink:0"></i>${a}</div>`).join('')}
     </div>`).join('');
 }
 
-// META DIÁRIA
-const META_DIA=5;
-function renderMeta(){
-  const el=document.getElementById('meta-bar'),tx=document.getElementById('meta-txt'),rs=document.getElementById('meta-resumo');
-  if(!el||!tx||!rs)return;
-  const iso=now().iso;
-  const feitos=leads.filter(l=>(l.hist||[]).some(h=>h.iso===iso&&(h.tipo==='atendeu'||h.tipo==='nao_atendeu'||h.tipo==='wa')));
-  const atendeu=leads.filter(l=>(l.hist||[]).some(h=>h.iso===iso&&h.tipo==='atendeu')).length;
-  const naoAtendeu=leads.filter(l=>(l.hist||[]).some(h=>h.iso===iso&&h.tipo==='nao_atendeu')).length;
-  const wa=leads.filter(l=>(l.hist||[]).some(h=>h.iso===iso&&h.tipo==='wa')).length;
-  const total=feitos.length,pct=Math.min(100,Math.round((total/META_DIA)*100));
-  el.style.width=pct+'%';
-  el.style.background=pct>=100?'linear-gradient(90deg,#10b981,#4ade80)':'linear-gradient(90deg,var(--gold3),var(--gold2))';
-  tx.textContent=`${total}/${META_DIA} contatos — ${pct}%${pct>=100?' 🎯 Meta batida!':''}`;
-  tx.style.color=pct>=100?'#4ade80':'var(--text2)';
-  rs.innerHTML=[{i:'ti-check',c:'#4ade80',l:`${atendeu} atenderam`},{i:'ti-phone-off',c:'#f87171',l:`${naoAtendeu} não atenderam`},{i:'ti-brand-whatsapp',c:'#25d366',l:`${wa} msgs WA`}]
-    .map(x=>`<span style="font-size:11px;display:flex;align-items:center;gap:4px;background:var(--bg3);padding:3px 9px;border-radius:5px"><i class="ti ${x.i}" style="color:${x.c};font-size:13px"></i>${x.l}</span>`).join('');
-}
-
-// REGISTRO DO DIA
 function renderRegDia(){
-  const el=document.getElementById('reg-dia'),ct=document.getElementById('reg-dia-count');
-  if(!el||!ct)return;
-  const iso=now().iso,eventos=[];
-  leads.forEach(l=>{(l.hist||[]).filter(h=>h.iso===iso).forEach(h=>{eventos.push({...h,leadNome:l.nome,leadId:l.id,leadTemp:l.temp,leadEtapa:l.etapa});});});
-  eventos.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
-  ct.textContent=`${eventos.length} registro${eventos.length!==1?'s':''} hoje`;
-  if(!eventos.length){el.innerHTML='<div style="color:var(--text3);font-size:13px;padding:8px 0">Nenhum registro hoje ainda. Bora contatar!</div>';return}
+  const el=document.getElementById('reg-dia'),ct=document.getElementById('reg-dia-count');if(!el||!ct)return;
+  const iso=hj(),evs=[];
+  leads.forEach(l=>(l.hist||[]).filter(h=>h.iso===iso).forEach(h=>evs.push({...h,ln:l.nome,lid:l.id,lt:l.temp,le:l.etapa})));
+  evs.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+  ct.textContent=`${evs.length} registro${evs.length!==1?'s':''} hoje`;
+  if(!evs.length){el.innerHTML='<div style="color:var(--text3);font-size:13px;padding:8px 0">Nenhum registro hoje ainda.</div>';return}
   const cc={atendeu:'#4ade80',nao_atendeu:'#f87171',nota:'#fbbf24',wa:'#25d366'};
-  const cl={atendeu:'Atendeu',nao_atendeu:'Não atendeu',nota:'Anotação',wa:'WhatsApp'};
-  const tl={gelado:'🔵',morno:'🟡',quente:'🔴',fechando:'🟢',perdido:'⚫'};
-  el.innerHTML=eventos.map(e=>`
-    <div style="display:flex;align-items:flex-start;gap:9px;padding:8px 10px;background:var(--bg3);border-radius:8px;margin-bottom:5px;cursor:pointer" onclick="openPanel('${e.leadId}')">
+  const cl={atendeu:'Atendeu',nao_atendeu:'Nao atendeu',nota:'Anotacao',wa:'WhatsApp'};
+  const tl={gelado:'Gelado',morno:'Morno',quente:'Quente',fechando:'Fechando',vendido:'Vendido'};
+  el.innerHTML=evs.map(e=>`
+    <div style="display:flex;align-items:flex-start;gap:9px;padding:8px 10px;background:var(--bg3);border-radius:8px;margin-bottom:5px;cursor:pointer" onclick="openPanel('${e.lid}')">
       <div style="width:8px;height:8px;border-radius:50%;background:${cc[e.tipo]||'#888'};margin-top:5px;flex-shrink:0"></div>
       <div style="flex:1;min-width:0">
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
-          <span style="font-size:13px;font-weight:600">${e.leadNome}</span>
-          <span style="font-size:10px">${tl[e.leadTemp]||''}</span>
-          <span style="font-size:10px;color:var(--text3)">Etapa ${e.leadEtapa||1}/7</span>
+          <span style="font-size:13px;font-weight:600">${e.ln}</span>
+          <span style="font-size:10px;color:var(--text2)">${tl[e.lt]||''}</span>
+          <span style="font-size:10px;color:var(--text3)">Etapa ${e.le||1}/7</span>
+          ${e.segundo?'<span style="font-size:10px;color:#a78bfa">2o contato</span>':''}
         </div>
-        <div style="font-size:12px;margin-top:2px"><strong style="color:${cc[e.tipo]||'#888'}">${cl[e.tipo]||e.tipo}</strong>${e.nota?' — '+e.nota:''}</div>
+        <div style="font-size:12px;margin-top:2px"><strong style="color:${cc[e.tipo]||'#888'}">${cl[e.tipo]||e.tipo}</strong>${e.nota?' - '+e.nota:''}</div>
       </div>
       <div style="font-size:10px;color:var(--text3);flex-shrink:0">${fmtTs(e.ts)}</div>
     </div>`).join('');
 }
 
+function toast(title,body,dur=4500){
+  const w=document.getElementById('toast-wrap');
+  const t=document.createElement('div');t.className='toast';
+  t.innerHTML=`<div class="toast-title">${title}</div><div class="toast-body">${body||''}</div>`;
+  w.appendChild(t);setTimeout(()=>t.remove(),dur);
+}
+
+// INIT
 document.getElementById('today-badge').textContent=`${DIAS[new Date().getDay()]}, ${new Date().getDate()} ${MESES[new Date().getMonth()]}`;
 
 if(!leads.length){
   leads=[
-    {id:'1',nome:'Carlos Mendonça',fone:'(17) 98822-1134',prot:'3x_sem',hor:'tarde',orig:'crmfaj',temp:'quente',etapa:5,
+    {id:'1',nome:'Carlos Mendonca',fone:'(17) 98822-1134',prot:'diario',hor:'tarde',orig:'crmfaj',temp:'quente',etapa:5,
      createdAt:'2026-05-19T10:00:00.000Z',updatedAt:'2026-05-21T16:32:00.000Z',
      sim:{renda:'R$ 4.800',nasc:'12/03/1990',cart:'sim',dep:'sim_2'},
      perfil:{tipo:'clt',civil:'casado',filhos:'sim'},docs:{0:true,1:true},
      hist:[{iso:'2026-05-19',ts:'2026-05-19T10:00:00.000Z',tipo:'nota',nota:'Casal, 2 filhos, aluguel R$1.200'},
-           {iso:'2026-05-21',ts:'2026-05-21T16:32:00.000Z',tipo:'atendeu',nota:'Pediu simulação. Muito interessado.'}]},
-    {id:'2',nome:'Patrícia Souza',fone:'(17) 99711-4422',prot:'2x_sem',hor:'manha',orig:'instagram',temp:'morno',etapa:2,
+           {iso:'2026-05-21',ts:'2026-05-21T16:32:00.000Z',tipo:'atendeu',nota:'Pediu simulacao. Muito interessado.'}]},
+    {id:'2',nome:'Patricia Souza',fone:'(17) 99711-4422',prot:'diario',hor:'manha',orig:'instagram',temp:'morno',etapa:2,
      createdAt:'2026-05-20T09:00:00.000Z',updatedAt:'2026-05-22T09:15:00.000Z',
      sim:{renda:'R$ 3.200',nasc:'',cart:'',dep:''},
      perfil:{tipo:'clt',civil:'solteiro',filhos:'nao'},docs:{},
-     hist:[{iso:'2026-05-20',ts:'2026-05-20T09:00:00.000Z',tipo:'nota',nota:'Lead Instagram. Mora com a mãe.'},
+     hist:[{iso:'2026-05-20',ts:'2026-05-20T09:00:00.000Z',tipo:'nota',nota:'Lead Instagram. Mora com a mae.'},
            {iso:'2026-05-22',ts:'2026-05-22T09:15:00.000Z',tipo:'nao_atendeu',nota:''}]},
     {id:'3',nome:'Rafael Teixeira',fone:'(17) 98100-7755',prot:'diario',hor:'noite',orig:'indicacao',temp:'fechando',etapa:7,
      createdAt:'2026-05-15T18:00:00.000Z',updatedAt:'2026-05-22T20:10:00.000Z',
      sim:{renda:'R$ 6.500',nasc:'05/07/1985',cart:'sim',dep:'sim_1'},
      perfil:{tipo:'clt',civil:'casado',filhos:'sim'},docs:{0:true,1:true,2:true,3:true},
-     hist:[{iso:'2026-05-15',ts:'2026-05-15T18:00:00.000Z',tipo:'nota',nota:'Indicação. Já decidido.'},
+     hist:[{iso:'2026-05-15',ts:'2026-05-15T18:00:00.000Z',tipo:'nota',nota:'Indicacao. Ja decidido.'},
            {iso:'2026-05-18',ts:'2026-05-18T19:30:00.000Z',tipo:'atendeu',nota:'Adorou. Pediu proposta.'},
            {iso:'2026-05-22',ts:'2026-05-22T20:10:00.000Z',tipo:'wa',nota:'WhatsApp aberto na Etapa 7'}]},
-    {id:'4',nome:'Fernanda Lima',fone:'(17) 99234-6601',prot:'3x_sem',hor:'tarde',orig:'crmfaj',temp:'gelado',etapa:1,
+    {id:'4',nome:'Fernanda Lima',fone:'(17) 99234-6601',prot:'diario',hor:'tarde',orig:'crmfaj',temp:'gelado',etapa:1,
      createdAt:'2026-05-22T14:00:00.000Z',updatedAt:'2026-05-22T14:00:00.000Z',
      sim:{},perfil:{tipo:'clt',civil:'solteiro',filhos:'nao'},docs:{},
      hist:[{iso:'2026-05-22',ts:'2026-05-22T14:00:00.000Z',tipo:'nota',nota:'Lead novo CRMFAJ.'}]},
   ];
   save();
 }
+
+verificarReativacoes();
+if(Notification.permission==='granted'){
+  document.getElementById('notif-label').textContent=' ON';
+  document.getElementById('notif-btn').style.color='#4ade80';
+  iniciarNotif();
+}
+if(new Date().getHours()>=18) setTimeout(()=>{
+  const pend2=leads.filter(leadAtivo).filter(l=>fezContato(l,false)&&!fezContato(l,true));
+  if(pend2.length){_2fila=pend2;enviarNotif(`${pend2.length} cliente(s) aguardam 2o contato!`,`Confira a Missao do Dia.`);}
+},5000);
+
 renderDash();
-if(Notification.permission==='granted')iniciarNotif();
-iniciarNotif();
-iniciarAlertasNotif();
 </script>
 </body>
 </html>
